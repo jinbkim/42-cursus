@@ -1,6 +1,7 @@
 #include <unistd.h>  // write
 #include <stdio.h>  // fscanf, fopen, fclose
 #include <string.h>  // memset
+#include <math.h>  // sqrtf, powf
 #define ERR1	"Error: argument"  // 에러코드1 매크로
 #define ERR2	"Error: Operation file corrupted"  // 에러코드2 매크로
 
@@ -12,10 +13,9 @@ char	c;  // 그려질 문자
 int		zone_w;  // 직사각형 너비
 int		zone_h;  // 직사각형 높이
 
-float	corner_x;  // 그려질 직사각형의 왼쪽 상단의 모서리의 x좌표
-float	corner_y;  // 그려질 직사각형의 왼쪽 상단의 모서리의 y좌표
-float 	rec_w;  // 그려질 직사각형의 너비
-float	rec_h;  // 그려질 직사각형의 높이
+float	center_x;  // 그려질 원의 중심의 x좌표
+float	center_y;  // 그려질 원의 중심의 y좌표
+float	r;  // 그려질 원의 반지름
 
 // 문자열과 개행을 출력하고 항상 1을 반환
 int		put_str_newline(char *s)
@@ -44,14 +44,21 @@ int		rounds(float v, char c)
 	return (v);
 }
 
-void	draw_rec(void)  // 직사각형에 문자 채우기
+// 2차원에서 두점사이의 거리를 구하는 공식
+float	get_dis(float x, float y, float cen_x, float cen_y)
+{
+	return (sqrtf(powf(cen_x-x, 2)+powf(cen_y-y, 2)));
+}
+
+void	draw_circle(void)  // 원에 문자 채우기
 {
 	int		x, y, x_start, y_start, x_end, y_end;
+	float	dis;
 
-	x_start = rounds(corner_x, 'u')-1;  // 문자가 채워지는 x좌표의 시작지점-1
-	y_start = rounds(corner_y, 'u')-1;  // 문자가 채워지는 y좌표의 시작지점-1
-	x_end = rounds(corner_x+rec_w, 'd');  // 문자가 채워지는 x좌표의 끝지점
-	y_end = rounds(corner_y+rec_h, 'd');  // 문자가 채워지는 y좌표의 끝지점
+	x_start = rounds(center_x-r, 'd');  // 문자가 채워지는 x좌표의 시작지점-1
+	y_start = rounds(center_y-r, 'd');  // 문자가 채워지는 y좌표의 시작지점-1
+	x_end = rounds(center_x+r, 'd');  // 문자가 채워지는 x좌표의 끝지점
+	y_end = rounds(center_y+r, 'd');  // 문자가 채워지는 y좌표의 끝지점
 	y = y_start;
 	while (++y <= y_end)
 	{
@@ -60,8 +67,10 @@ void	draw_rec(void)  // 직사각형에 문자 채우기
 		{
 			if (x<0 || y<0 || zone_w<=x || zone_h<=y)  // 출력할 직사각형의 범위를 넘어가면
 				continue ;
-			// 꽉찬 직사각형이거나 직사각형의 모서리일때
-			if (mode=='R' || x==x_start+1 || x==x_end || y==y_start+1 || y==y_end)
+			dis = get_dis(x, y, center_x, center_y);  // 원의 중심에서의 거리
+			// 꽉찬 원일때, 원의 중심에서의 거리가 반지름보다 작거나 같을때나
+			// 빈원일때, 반지름 - 원의 중심에서의 거리가 0이상 1미만 일때
+			if ((mode=='C' && dis<=r) || (0<=r-dis && r-dis<1))
 				zone[y][x] = c;  // 문자 채우기
 		}
 	}
@@ -83,15 +92,15 @@ int		main(int argc, char **argv)
 		// 출력될 직사각형의 범위가 잘못 되었다면
 		return (put_str_newline(ERR2));  // 에러코드2와 개행을 출력하고, 1을 반환하며 프로그램 종료
 	memset(zone, back_c, sizeof(zone));  // 직사각형에 배경이될 문자를 채우기
-	// 그려질 직사각형의 정보 읽기
-	while (0 < (ret = fscanf(file, "%c %f %f %f %f %c\n", &mode, &corner_x, &corner_y, &rec_w, &rec_h, &c)))
+	// 그려질 원의 정보 읽기
+	while (0 < (ret = fscanf(file, "%c %f %f %f %c\n", &mode, &center_x, &center_y, &r, &c)))
 	{
-		// 약속된 mode('r' or 'R') 가 아니거나,
-		// 그려질 직사각형의 너비나 높이가 음수거나,
-		// 6개 정보를 다읽지 못한다면
-		if ((mode!='R' && mode!='r') || rec_w<0 || rec_h<0 || ret!=6)
+		// 약속된 mode('c' or 'C') 가 아니거나,
+		// 그려질 원의 반지름이 음수거나,
+		// 5개 정보를 다읽지 못한다면
+		if ((mode!='c' && mode!='C') || r<0 || ret!=5)
 			return (put_str_newline(ERR2));  // 에러코드2와 개행을 출력하고, 1을 반환하며 프로그램 종료
-		draw_rec();  // 읽은 정보를 바탕으로 직사각형에 문자 채우기
+		draw_circle();  // 읽은 정보를 바탕으로 원에 문자 채우기
 	}
 	while (++i < zone_h)
 	{
@@ -99,5 +108,4 @@ int		main(int argc, char **argv)
 		put_str_newline(zone[i]);  // 한줄과 개행출력
 	}
 	fclose(file);  // 파일 닫기
-	return (0);
 }
