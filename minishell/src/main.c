@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinbkim <jinbkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jinbkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/07 13:46:41 by jinbkim           #+#    #+#             */
-/*   Updated: 2020/09/08 11:59:01 by jinbkim          ###   ########.fr       */
+/*   Updated: 2020/12/06 19:00:48 by jinbkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	exit_minishell(char ***cmds)
 }
 
 int		main(int argc, char **argv, char **envp)
-{
+{ 
 	char	***cmds;
 	char	*line;
 

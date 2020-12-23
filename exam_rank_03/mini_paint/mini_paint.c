@@ -108,4 +108,5 @@ int		main(int argc, char **argv)
 		put_str_newline(zone[i]);  // 한줄과 개행출력
 	}
 	fclose(file);  // 파일 닫기
+	return (0);
 }
