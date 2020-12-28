@@ -1,33 +1,33 @@
 #include "main.hpp"
 
+void	print(const char *s)
+{
+	std::cout<<"\n>>>>>>>>>> "<<s<<" <<<<<<<<<<\n\n";
+}
+
 int		main(void)
 {
 	std::string	cmd;
+	phoneBook	pb;
 
 	while (1)
 	{
-		std::cout<<"--------------------------------------------------\n";
-		std::cout<<"-------------- My Awesome PhoneBook --------------\n";
-		std::cout<<"--------------------------------------------------\n\n";
+		print("My Awesome PhoneBook");
 		std::cout<<"select (ADD, SEARCH, EXIT) : ";
-		std::getline(std::cin, cmd);
-		if (cmd == "ADD")
+		std::cin>>cmd;  // 명령어 읽기
+		std::cin.ignore();  // 버퍼에 남은 개행 제거
+		std::cout<<"-------------------------------------------\n\n";
+		if (cmd == "ADD")  // 폰북에 데이터 추가
+			pb.addContact();
+		else if (cmd == "SEARCH")  // 폰북 검색
+			pb.searchContact();
+		else if (cmd == "EXIT")  // 프로그램 종료
 		{
-			
-		}
-		else if (cmd == "SEARCH")
-		{
-
-		}
-		else if (cmd == "EXIT")
-		{
-			std::cout<<"--------------------------------------------------\n";
-			std::cout<<"--------- Good Bye! My Awesome PhoneBook ---------\n";
-			std::cout<<"--------------------------------------------------\n\n";
+			print("Good Bye! My Awesome PhoneBook");
 			break ;
 		}
 		else
-			std::cout<<"wrong input!\n";
+			print("wrong input!");
 	}
 	return (0);
 }
