@@ -1,3 +1,5 @@
+// 전화번호부를 만드는 과제
+
 #include "main.hpp"
 
 void	print(const char *s)
