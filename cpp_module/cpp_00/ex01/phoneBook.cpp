@@ -1,4 +1,4 @@
-#include "main.hpp"
+#include "phoneBook.hpp"
 
 phoneBook::phoneBook(void) : num(0)  // num을 0으로 초기화
 {

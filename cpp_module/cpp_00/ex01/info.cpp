@@ -1,4 +1,4 @@
-#include "main.hpp"
+#include "info.hpp"
 
 void    info::inputInfo(void)
 {
