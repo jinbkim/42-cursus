@@ -4,7 +4,7 @@
 
 # include <iostream>
 # include <string>
-# include <iomanip>
+# include <iomanip>  // setw
 
 
 
@@ -15,21 +15,21 @@ private:
     static std::string cate[11];  // 쉽게 초기화 시키기위해 static 변수로 선언
 
 public:
-    void    initInfo(void);
-    void    previewInfo(void);
-    void    viewInfo(void);
+    void    inputInfo(void);  // 정보 입력
+    void    previewInfo(void);  // 정보 미리보기
+    void    viewInfo(void);  // 정보 출력
 };
 
 class   phoneBook
 {
 private:
-    int     num;
-    info    contact[SIZE];
+    int     num;  // 정보 개수
+    info    contact[SIZE];  // 정보 배열
 
 public:
-    phoneBook(void);
-    void    addContact(void);
-    void    searchContact(void);
+    phoneBook(void);  // 클래스 생성자
+    void    addContact(void);  // 정보 추가
+    void    searchContact(void);  // 정보 검색
 };
 
 
