@@ -17,6 +17,8 @@ int		main(void)
 		print("My Awesome PhoneBook");
 		std::cout<<"select (ADD, SEARCH, EXIT) : ";
 		std::cin>>cmd;  // 명령어 읽기
+		if (std::cin.eof())  // eof(ctrl+d)를 만나면
+			return (-1);  // 에러표사
 		std::cin.ignore();  // 버퍼에 남은 개행 제거
 		std::cout<<"-------------------------------------------\n\n";
 		if (cmd == "ADD")  // 폰북에 데이터 추가
@@ -26,10 +28,10 @@ int		main(void)
 		else if (cmd == "EXIT")  // 프로그램 종료
 		{
 			print("Good Bye! My Awesome PhoneBook");
-			break ;
+			return (0);
 		}
 		else
 			print("wrong input!");
 	}
-	return (0);
+	return (-1);
 }

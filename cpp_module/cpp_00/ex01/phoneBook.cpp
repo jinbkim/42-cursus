@@ -13,7 +13,7 @@ void    phoneBook::addContact(void)
         contact[num++].inputInfo();
 }
 
-void    phoneBook::searchContact(void)
+void	phoneBook::searchContact(void)
 {
     int     idx;
 
@@ -27,6 +27,8 @@ void    phoneBook::searchContact(void)
     }
 	std::cout<<"\nselect index : ";
     std::cin>>idx;
+	if (std::cin.eof())  // ctrl+d
+		exit(-1);  // 에러표시
     if (idx<0 || num<=idx || std::cin.fail())  // 입력이 음수거나 범위에 없거나 정수가 아니면
     {
 		print("wrong index!");

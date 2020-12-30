@@ -6,7 +6,9 @@ void    info::inputInfo(void)
     {
         std::cout<<cate[i]<<" : ";
         std::getline(std::cin, content[i]);  // 한줄(띄어쓰기 포함)을 다읽기 위해 cin대신 getline 사용
-    }
+		if (std::cin.eof())  // ctrl+d
+			exit(-1);  // 에러 표시
+	}
 }
 
 void    info::previewInfo(void)

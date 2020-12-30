@@ -14,7 +14,7 @@ private:
 public:
     phoneBook(void);  // 클래스 생성자
     void    addContact(void);  // 정보 추가
-    void    searchContact(void);  // 정보 검색
+    void	searchContact(void);  // 정보 검색
 };
 
 void	print(const char *s);
