@@ -15,7 +15,7 @@ int		main(int argc, char **argv)
 	std::string		line;
 	std::string		s1;
 	std::string		s2;
-	int		pos;
+	std::string::size_type pos;
 
 	if (argc !=4)  // 인자로 파일이름, 문자열 두개가 들어오지 않으면
 	{
@@ -42,10 +42,11 @@ int		main(int argc, char **argv)
 				break ;
 			line.replace(pos, s1.length(), s2);  // s1의 문자열을 s2로 변경
 		}
-		ofs<<line<<'\n';
+		ofs<<line;  // 변경된 문자열 출력할 파일에 넣기
+		if (!ifs.eof())  // 읽을 파일을 다읽었다면
+		ofs<<'\n';  // 출력할 파일에 개행추가
 	}
-	ifs.close();
-	ofs.close();
+	ifs.close();  // 읽을 파일 닫기
+	ofs.close();  // 출력할 파일 닫기
 	return (0);
 }
-	
