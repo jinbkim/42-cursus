@@ -1,0 +1,51 @@
+// replace 프로그램 만들기
+// 인자 : FILENAME, 두개의 문자열 s1과 s2
+// 파일이 열리고 파일내에 있는 문자열 s1이 s2로 변경된 FILENAME.replace이 만들어짐
+// 테스트 파일도 제출할것
+
+#include <iostream>
+#include <string>
+#include <fstream>
+
+int		main(int argc, char **argv)
+{
+	std::ifstream	ifs;
+	std::ofstream	ofs;
+	std::string		file;
+	std::string		line;
+	std::string		s1;
+	std::string		s2;
+	int		pos;
+
+	if (argc !=4)  // 인자로 파일이름, 문자열 두개가 들어오지 않으면
+	{
+		std::cout<<"Error : wrong argument\n";
+		return (-1);
+	}
+	file = argv[1];  //파일 이름
+	s1=argv[2];  // 첫번째 문자열
+	s2=argv[3];  // 두번째 문자열
+	ifs.open(file);  // 읽을 파일 열기
+	file += ".replace";  // 파일이름 수정
+	ofs.open(file);  // 출력할 파일 열기
+	if (!ifs.is_open() || !ofs.is_open())  // 둘중에 하나라도 파일이 안열렸다면
+	{
+		std::cout<<"Error : wrong file name\n";
+		return (-1);		
+	}
+	while (getline(ifs, line))  // 한줄씩 파일 읽기
+	{
+		while (true)
+		{
+			pos = line.find(s1);  // 한줄읽은 line에 문자열이 s1 있는 위치
+			if (pos == std::string::npos)  // line에 s1 문자열이 없으면
+				break ;
+			line.replace(pos, s1.length(), s2);  // s1의 문자열을 s2로 변경
+		}
+		ofs<<line<<'\n';
+	}
+	ifs.close();
+	ofs.close();
+	return (0);
+}
+	
