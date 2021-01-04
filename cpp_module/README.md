@@ -19,3 +19,7 @@
 - stream state flag
 - ifstream & ofstream
 ### cpp02
+- swallow copy & deep copy
+- copy constructor
+- operator overloading
+### cpp03
