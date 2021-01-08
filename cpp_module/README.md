@@ -23,3 +23,9 @@
 - copy constructor
 - operator overloading
 ### cpp03
+- inheritance
+- protected
+- virtual function
+- virtual desconstructor
+- abstract class
+- multiple inheritance
