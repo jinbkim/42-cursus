@@ -16,7 +16,7 @@ int main(void)
 {
 	try
 	{
-		Bureaucrat a("A", 149);
+		Bureaucrat a("A", 2);
 		std::cout << a;
 		a.decrementGrade();
 		std::cout << a;

@@ -1,25 +1,52 @@
+// firend 선언문을 추가하여 아래 코드가 컴파일 되도록 하시오
+
+// 예상 출력값
+// Her phone number: 010-1234-5678
+// His height: 170
+
 #include <iostream>
+#include <cstring>
 using namespace std;
 
-class Exception : public std::exception // 예외 클래스 정의, std::exception 상속
+class Girl;
+
+class Boy
 {
-public :
-	// std::exception의 what() 함수를 override
-	virtual const char *what() const throw()
-	{
-		return ("jinbkim what!()\n");
-	}
+private:
+	int height;
+public:
+	Boy(int height) : height(height) {}
+	void ShowYourFriendInfo(Girl &frn);
 };
 
-int		main(void)
+class Girl
 {
-	try
+private:
+	char phNum[20];
+public:
+	Girl(const char * num)
 	{
-		Exception	e;
-		throw(e);
+		strcpy(phNum, num);
 	}
-	catch(Exception &e)
-	{
-		cout<<e.what()<<'\n';
-	}
+	void ShowYourFriendInfo(Boy &frn);
+};
+
+void Boy::ShowYourFriendInfo(Girl &frn)
+{
+	cout<<"Her phone number: "<<frn.phNum<<endl;
+}
+
+void Girl::ShowYourFriendInfo(Boy &frn)
+{
+	cout<<"His height: "<<frn.height<<endl;
+}
+
+int main(void)
+{
+	Boy boy(170);
+	Girl girl("010-1234-5678");
+
+	boy.ShowYourFriendInfo(girl);
+	girl.ShowYourFriendInfo(boy);
+	return 0;
 }
