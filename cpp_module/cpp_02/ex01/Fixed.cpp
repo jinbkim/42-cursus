@@ -5,9 +5,10 @@ Fixed::Fixed() : val(0)
     std::cout<<"Default constructor called\n";
 }
 
-Fixed::Fixed(const Fixed &ref) : val(ref.val)
+Fixed::Fixed(const Fixed &ref)
 {
     std::cout<<"Copy constructor called\n";
+	*this = ref;
 }
 
 Fixed::Fixed(int const val)
