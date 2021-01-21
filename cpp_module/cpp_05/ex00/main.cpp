@@ -1,60 +1,39 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hpark <hpark@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/04 12:52:41 by hpark             #+#    #+#             */
-/*   Updated: 2020/09/04 12:53:12 by hpark            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// std::exception class의 what() 함수를 오버로딩 해보는문제
+// try, catch 같은 예외처리를 해보는 문제
 
 #include "Bureaucrat.hpp"
 
-int main(void)
+int main()
 {
-	try
+    try
 	{
-		Bureaucrat a("A", 2);
-		std::cout << a;
-		a.decrementGrade();
-		std::cout << a;
-		a.decrementGrade();
-		std::cout << a;
-	}
-	catch (std::exception & e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	try
-	{
-		Bureaucrat b("B", 2);
-		std::cout << b;
-		b.incrementGrade();
-		std::cout << b;
-		b.incrementGrade();
-	}
-	catch (std::exception & e)
-    {
-        std::cerr << e.what() << std::endl;
+    	Bureaucrat zero("zero", 0);
     }
-	try
+	catch (std::exception const &e)
 	{
-		Bureaucrat c("C", 155);
-	}
-	catch (std::exception & e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	try
-	{
-		 Bureaucrat d("D", -24);
-	}
-	catch (std::exception & e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+        std::cerr<<e.what()<<'\n';
+    }
+    std::cout<<'\n';
 
-	return (0);
+    Bureaucrat jinbkim("jinbkim", 1);
+    std::cout<<jinbkim;
+    try
+	{
+        jinbkim.incrementGrade();
+    }
+	catch (std::exception const &e)
+	{
+        std::cerr<<e.what()<<'\n';
+    }
+    std::cout<<'\n';
+
+    for (int i = 1; i < 150; i++)
+        jinbkim.decrementGrade();
+    std::cout<<jinbkim<<'\n';
+
+    try {
+        jinbkim.decrementGrade();
+    } catch (std::exception const &e) {
+        std::cerr<<e.what()<<'\n';
+    }
 }
