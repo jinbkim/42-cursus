@@ -3,28 +3,28 @@
 SuperTrap::SuperTrap()
 {
     name = "unknown";
-    hp = FragTrap::getInfo("hp");
-    maxHp = FragTrap::getInfo("maxHp");
-    ep = NinjaTrap::getInfo("ep");
-    maxEp = NinjaTrap::getInfo("maxEp");
+    hp = 100;
+    maxHp = 100;
+    ep = 120;
+    maxEp = 120;
     level = 1;
-    meleeDam = NinjaTrap::getInfo("meleeDam");
-    rangedDam = FragTrap::getInfo("rangedDam");
-    armor = FragTrap::getInfo("armor");
+    meleeDam = 60;
+    rangedDam = 20;
+    armor = 5;
 	std::cout<<"[SUPER] "<<name<<" player joined the game!\n";
 }
 
 SuperTrap::SuperTrap(std::string name) : ClapTrap(name), FragTrap(name), NinjaTrap(name)
 {
     this->name = name;
-	hp = FragTrap::getInfo("hp");
-    maxHp = FragTrap::getInfo("maxHp");
-    ep = NinjaTrap::getInfo("ep");
-    maxEp = NinjaTrap::getInfo("maxEp");
+    hp = 100;
+    maxHp = 100;
+    ep = 120;
+    maxEp = 120;
     level = 1;
-    meleeDam = NinjaTrap::getInfo("meleeDam");
-    rangedDam = FragTrap::getInfo("rangedDam");
-    armor = FragTrap::getInfo("armor");
+    meleeDam = 60;
+    rangedDam = 20;
+    armor = 5;
 	std::cout<<"[SUPER] "<<name<<" player joined the game!\n";	
 }
 
@@ -38,14 +38,14 @@ SuperTrap::SuperTrap(const SuperTrap & ref)
 SuperTrap& SuperTrap::operator=(const SuperTrap & ref)
 {
     this->name = ref.name;
-	hp = FragTrap::getInfo("hp");
-    maxHp = FragTrap::getInfo("maxHp");
-    ep = NinjaTrap::getInfo("ep");
-    maxEp = NinjaTrap::getInfo("maxEp");
-    level = 1;
-    meleeDam = NinjaTrap::getInfo("meleeDam");
-    rangedDam = FragTrap::getInfo("rangedDam");
-    armor = FragTrap::getInfo("armor");
+	hp = ref.hp;
+    maxHp = ref.maxHp;
+    ep = ref.maxHp;
+    maxEp = ref.maxEp;
+    level = ref.level;
+    meleeDam = ref.rangedDam;
+    rangedDam = ref.rangedDam;
+    armor = ref.armor;
     return (*this);    
 }
 

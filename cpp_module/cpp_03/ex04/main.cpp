@@ -21,6 +21,8 @@
 
 int     main(void)
 {
+	SuperTrap	a;
+	std::cout<<"============================\n";
 	SuperTrap	jinbkim("jinbkim");
 	SuperTrap	yapark("yapark");
 	SuperTrap	jakang1("jakang");
