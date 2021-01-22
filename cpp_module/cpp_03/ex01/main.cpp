@@ -26,6 +26,34 @@
 
 int     main(void)
 {
+	// FragTrap	jinbkim("jinbkim");
+	// FragTrap	yapark("yapark");
+	// FragTrap	jakang1("jakang");
+	// // FragTrap	jakang2 = jakang1 랑 똑같음
+	// FragTrap	jakang2(jakang1);  // 복사 생성자
+	// FragTrap	jakang3;  // 기본 생성자
+
+	// jakang3 = jakang1;  // 대입 연산자 오버로딩
+	// jinbkim.takeDamage(yapark.rangedAttack(jinbkim.name));  // yapark이 jinbkim angedAttack
+	// jinbkim.show_state();
+	// yapark.takeDamage(jinbkim.meleeAttack(yapark.name));  // jinbkim이 yapark meleeAttack
+	// yapark.show_state();
+
+	// jinbkim.beRepaired(100);  // jinbkim 회복
+	// jinbkim.show_state();
+	// yapark.beRepaired(100);  // yapark 회복
+	// yapark.show_state();
+
+	// std::cout<<"\n===== random attack! =====\n\n";
+	// for(int i=1; i<=5; i++)
+	// {
+	// 	std::cout<<"----- "<<i<<"st random attack! -----\n";
+	// 	sleep(1);
+	// 	jinbkim.takeDamage(yapark.vaulthunter_dot_exe(jinbkim.name));  // yapark이 랜덤무기로 jinbkim 공격
+	// 	jinbkim.show_state();
+	// 	yapark.show_state();
+	// }
+
 	ScavTrap	jinbkim("jinbkim");
 	ScavTrap	yapark("yapark");
 	ScavTrap	jakang1("jakang");
