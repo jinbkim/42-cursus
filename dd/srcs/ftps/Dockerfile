@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.10
 
 # RUN apk update and install dependencies
 RUN apk update \
