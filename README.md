@@ -15,6 +15,10 @@
 - libasm (100 / 115)
 ### 2020.09
 - minishell (100 / 115)
+### 2021.01
+- ft_services (100/100)
+### 2021.02
+- cpp_module 00~08(100/100)
 
 ## 과제 흥미
 ### 재밌음
@@ -25,6 +29,8 @@
 - libft
 - cub3d
 - libasm
+- cpp_module
 ###	노잼
 - netwhat
 - ft_server
+- ft_services
