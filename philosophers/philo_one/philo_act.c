@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_act.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jinbkim <jinbkim@student.42.kr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/11 18:51:02 by jinbkim           #+#    #+#             */
+/*   Updated: 2021/02/11 18:53:02 by jinbkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo_one.h"
 
 int		msg(t_philo *philo, int msg, unsigned long cur)
@@ -18,7 +30,7 @@ int		msg(t_philo *philo, int msg, unsigned long cur)
 	}
 	else if (msg == SLEEPING)
 		printf(" is sleeping\n");
-	else if(msg == THINKING)
+	else if (msg == THINKING)
 		printf(" is thinking\n");
 	else if (msg == DEAD)
 	{
@@ -68,7 +80,6 @@ int		eat(t_philo *philo)
 	}
 	return (0);
 }
-
 
 void	*philo_act(void *phi)
 {

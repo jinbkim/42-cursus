@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jinbkim <jinbkim@student.42.kr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/11 18:46:35 by jinbkim           #+#    #+#             */
+/*   Updated: 2021/02/11 18:48:07 by jinbkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo_one.h"
 
 int		parse(char **argv)
@@ -22,9 +34,9 @@ void	init_table(void)
 	while (++i < table.num_philo)
 	{
 		pthread_mutex_init(&table.fork[i], NULL);
-		philos[i].nbr = i+1;
+		philos[i].nbr = i + 1;
 		philos[i].eat = 0;
-		philos[i].fork1 = i-1;
+		philos[i].fork1 = i - 1;
 		if (!i)
 			philos[i].fork1 = table.num_philo - 1;
 		philos[i].fork2 = i;

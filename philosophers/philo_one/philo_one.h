@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_one.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jinbkim <jinbkim@student.42.kr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/11 18:51:18 by jinbkim           #+#    #+#             */
+/*   Updated: 2021/02/11 18:52:36 by jinbkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_ONE_H
 # define PHILO_ONE_H
 
@@ -5,7 +17,7 @@
 # include <unistd.h>
 # include <sys/time.h>
 # include <pthread.h>
-# include <string.h> 
+# include <string.h>
 # include <stdio.h>
 
 # define TAKEN_FORK	0
@@ -39,8 +51,8 @@ typedef struct		s_philo
 	pthread_t		tid;
 }					t_philo;
 
-t_table		table;
-t_philo		*philos;
+t_table		g_table;
+t_philo		*g_philos;
 
 void				*philo_act(void *philo);
 void				*philo_monitor(void *philo);
