@@ -14,13 +14,13 @@
 
 int		msg(t_philo *philo, int msg, unsigned long cur)
 {
-	pthread_mutex_lock(&table.m_msg);
-	if (table.dead)
+	pthread_mutex_lock(&g_table.m_msg);
+	if (g_table.dead)
 	{
-		pthread_mutex_unlock(&table.m_msg);
+		pthread_mutex_unlock(&g_table.m_msg);
 		return (1);
 	}
-	printf("%lu %d", cur - table.base_time, philo->nbr);
+	printf("%lu %d", cur - g_table.base_time, philo->nbr);
 	if (msg == TAKEN_FORK)
 		printf(" has taken a fork\n");
 	else if (msg == EATING)
@@ -35,9 +35,9 @@ int		msg(t_philo *philo, int msg, unsigned long cur)
 	else if (msg == DEAD)
 	{
 		printf(" died\n");
-		table.dead = 1;
+		g_table.dead = 1;
 	}
-	pthread_mutex_unlock(&table.m_msg);
+	pthread_mutex_unlock(&g_table.m_msg);
 	return (0);
 }
 
@@ -49,10 +49,10 @@ void	*philo_monitor(void *phi)
 	philo = (t_philo *)phi;
 	while (1)
 	{
-		if (philo->eat == table.num_eat)
+		if (philo->eat == g_table.num_eat)
 			break ;
 		cur = get_time();
-		if (table.time_to_die < cur - philo->last_eat)
+		if (g_table.time_to_die < cur - philo->last_eat)
 		{
 			msg(philo, DEAD, cur);
 			return (NULL);
@@ -64,18 +64,18 @@ void	*philo_monitor(void *phi)
 
 int		eat(t_philo *philo)
 {
-	pthread_mutex_lock(&table.fork[philo->fork1]);
+	pthread_mutex_lock(&g_table.fork[philo->fork1]);
 	msg(philo, TAKEN_FORK, get_time());
-	pthread_mutex_lock(&table.fork[philo->fork2]);
+	pthread_mutex_lock(&g_table.fork[philo->fork2]);
 	msg(philo, TAKEN_FORK, get_time());
 	msg(philo, EATING, get_time());
-	less_error_sleep(table.time_to_eat);
-	pthread_mutex_unlock(&table.fork[philo->fork1]);
-	pthread_mutex_unlock(&table.fork[philo->fork2]);
+	less_error_sleep(g_table.time_to_eat);
+	pthread_mutex_unlock(&g_table.fork[philo->fork1]);
+	pthread_mutex_unlock(&g_table.fork[philo->fork2]);
 	philo->eat++;
-	if (philo->eat == table.num_eat)
+	if (philo->eat == g_table.num_eat)
 	{
-		table.eat++;
+		g_table.eat++;
 		return (1);
 	}
 	return (0);
@@ -96,7 +96,7 @@ void	*philo_act(void *phi)
 			break ;
 		if (msg(philo, SLEEPING, get_time()))
 			break ;
-		less_error_sleep(table.time_to_sleep);
+		less_error_sleep(g_table.time_to_sleep);
 		if (msg(philo, THINKING, get_time()))
 			break ;
 	}

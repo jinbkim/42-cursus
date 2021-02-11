@@ -14,15 +14,15 @@
 
 int		parse(char **argv)
 {
-	if ((table.num_philo = ft_atoi(argv[1])) <= 1 ||
-		(table.time_to_die = ft_atoi(argv[2])) <= 0 ||
-		(table.time_to_eat = ft_atoi(argv[3])) <= 0 ||
-		(table.time_to_sleep = ft_atoi(argv[4])) <= 0)
+	if ((g_table.num_philo = ft_atoi(argv[1])) <= 1 ||
+		(g_table.time_to_die = ft_atoi(argv[2])) <= 0 ||
+		(g_table.time_to_eat = ft_atoi(argv[3])) <= 0 ||
+		(g_table.time_to_sleep = ft_atoi(argv[4])) <= 0)
 		return (1);
-	if (argv[5] && (table.num_eat = ft_atoi(argv[5])) <= 0)
+	if (argv[5] && (g_table.num_eat = ft_atoi(argv[5])) <= 0)
 		return (1);
 	else if (!argv[5])
-		table.num_eat = -1;
+		g_table.num_eat = -1;
 	return (0);
 }
 
@@ -31,20 +31,20 @@ void	init_table(void)
 	int		i;
 
 	i = -1;
-	while (++i < table.num_philo)
+	while (++i < g_table.num_philo)
 	{
-		pthread_mutex_init(&table.fork[i], NULL);
-		philos[i].nbr = i + 1;
-		philos[i].eat = 0;
-		philos[i].fork1 = i - 1;
+		pthread_mutex_init(&g_table.fork[i], NULL);
+		g_philos[i].nbr = i + 1;
+		g_philos[i].eat = 0;
+		g_philos[i].fork1 = i - 1;
 		if (!i)
-			philos[i].fork1 = table.num_philo - 1;
-		philos[i].fork2 = i;
+			g_philos[i].fork1 = g_table.num_philo - 1;
+		g_philos[i].fork2 = i;
 	}
-	pthread_mutex_init(&table.m_msg, NULL);
-	table.eat = 0;
-	table.dead = 0;
-	table.base_time = get_time();
+	pthread_mutex_init(&g_table.m_msg, NULL);
+	g_table.eat = 0;
+	g_table.dead = 0;
+	g_table.base_time = get_time();
 }
 
 void	init_philos(void)
@@ -52,14 +52,14 @@ void	init_philos(void)
 	int		i;
 
 	i = -1;
-	while (++i < table.num_philo)
+	while (++i < g_table.num_philo)
 	{
-		philos[i].last_eat = get_time();
-		pthread_create(&philos[i].tid, NULL, philo_act, &philos[i]);
+		g_philos[i].last_eat = get_time();
+		pthread_create(&g_philos[i].tid, NULL, philo_act, &g_philos[i]);
 	}
 	i = -1;
-	while (++i < table.num_philo)
-		pthread_join(philos[i].tid, NULL);
+	while (++i < g_table.num_philo)
+		pthread_join(g_philos[i].tid, NULL);
 }
 
 void	clean_table(void)
@@ -67,20 +67,20 @@ void	clean_table(void)
 	int		i;
 
 	i = -1;
-	while (++i < table.num_philo)
-		pthread_mutex_destroy(&table.fork[i]);
-	pthread_mutex_destroy(&table.m_msg);
-	free(table.fork);
-	free(philos);
+	while (++i < g_table.num_philo)
+		pthread_mutex_destroy(&g_table.fork[i]);
+	pthread_mutex_destroy(&g_table.m_msg);
+	free(g_table.fork);
+	free(g_philos);
 }
 
 int		main(int argc, char **argv)
 {
 	if (!(argc == 5 || argc == 6) || parse(argv))
 		return (printf("argruments error!"));
-	if (!(philos = malloc(sizeof(t_philo) * table.num_philo)))
+	if (!(g_philos = malloc(sizeof(t_philo) * g_table.num_philo)))
 		return (printf("philos malloc error!"));
-	if (!(table.fork = malloc(sizeof(pthread_mutex_t) * table.num_philo)))
+	if (!(g_table.fork = malloc(sizeof(pthread_mutex_t) * g_table.num_philo)))
 		return (printf("fork malloc error!"));
 	init_table();
 	init_philos();
