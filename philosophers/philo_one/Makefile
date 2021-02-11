@@ -19,3 +19,4 @@ fclean	: clean
 re		: fclean all
 
 $(NAME) : $(OBJ)
+		$(CC) $(CFLAGS) -o $(NAME) $(OBJ)

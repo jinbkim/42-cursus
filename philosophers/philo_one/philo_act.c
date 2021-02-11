@@ -21,7 +21,10 @@ int		msg(t_philo *philo, int msg, unsigned long cur)
 	else if(msg == THINKING)
 		printf(" is thinking\n");
 	else if (msg == DEAD)
+	{
 		printf(" died\n");
+		table.dead = 1;
+	}
 	pthread_mutex_unlock(&table.m_msg);
 	return (0);
 }
@@ -39,7 +42,6 @@ void	*philo_monitor(void *phi)
 		cur = get_time();
 		if (table.time_to_die < cur - philo->last_eat)
 		{
-			table.dead = 1;
 			msg(philo, DEAD, cur);
 			return (NULL);
 		}
