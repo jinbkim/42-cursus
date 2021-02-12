@@ -6,7 +6,7 @@ OBJ		= $(SRC:.c=.o)
 NAME	= philo_one
 RM		= rm -rf
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g -fsanitize=address
 
 all 	: $(NAME)
 
