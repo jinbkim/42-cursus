@@ -6,7 +6,7 @@
 /*   By: jinbkim <jinbkim@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 18:51:02 by jinbkim           #+#    #+#             */
-/*   Updated: 2021/02/12 13:05:11 by jinbkim          ###   ########.fr       */
+/*   Updated: 2021/02/12 14:11:56 by jinbkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 
 int		msg(t_philo *philo, int msg, unsigned long cur)
 {
-	usleep(200);
+	usleep(300);
 	sem_wait(g_table.m_msg);
 	if (g_table.dead)
-	{
-		sem_post(g_table.m_msg);
-		return (1);
-	}
+		return (sem_post(g_table.m_msg) + 100);
 	printf("%lu %d", cur - g_table.base_time, philo->nbr);
 	if (msg == TAKEN_FORK)
 		printf(" has taken a fork\n");

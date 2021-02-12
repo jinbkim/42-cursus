@@ -6,13 +6,13 @@
 /*   By: jinbkim <jinbkim@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 18:51:37 by jinbkim           #+#    #+#             */
-/*   Updated: 2021/02/11 18:53:55 by jinbkim          ###   ########.fr       */
+/*   Updated: 2021/02/12 14:01:26 by jinbkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_three.h"
 
-int		kill_process()
+int		kill_process(void)
 {
 	int		i;
 
@@ -22,7 +22,7 @@ int		kill_process()
 	return (1);
 }
 
-void	process_monitor()
+void	process_monitor(void)
 {
 	int		i;
 	int		status;
@@ -45,7 +45,7 @@ void	process_monitor()
 		if (i != g_table.num_philo)
 		{
 			kill_process();
-			break ; 
+			break ;
 		}
 	}
 }
