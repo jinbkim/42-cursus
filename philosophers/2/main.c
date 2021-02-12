@@ -56,9 +56,9 @@ void	init_table(void)
 	table.dead = 0;
 	table.base_time = get_time();
 	table.enter = sem_open("/enter", O_CREAT | O_EXCL, 0777, table.num_philo / 2);
-	table.write_msg = sem_open("/write_msg", O_CREAT | O_EXCL, 0777, 1);
+	table.m_msg = sem_open("/m_msg", O_CREAT | O_EXCL, 0777, 1);
 	sem_unlink("/enter");
-	sem_unlink("/write_msg");
+	sem_unlink("/m_msg");
 }
 
 void		less_error_sleep(unsigned long input)
@@ -78,10 +78,10 @@ void		less_error_sleep(unsigned long input)
 
 int		msg(t_philo *philo, int msg, unsigned long cur)
 {
-	sem_wait(table.write_msg);
+	sem_wait(table.m_msg);
 	if (table.dead)
 	{
-		sem_post(table.write_msg);
+		sem_post(table.m_msg);
 		return (1);
 	}
 	printf("%lu %d", cur - table.base_time, philo->nbr);
@@ -101,7 +101,7 @@ int		msg(t_philo *philo, int msg, unsigned long cur)
 		table.dead = 1;
 		printf(" died\n");
 	}
-	sem_post(table.write_msg);
+	sem_post(table.m_msg);
 	return (0);
 }
 
@@ -183,7 +183,7 @@ void	init_philos(void)
 void	clean_table(void)
 {
 	sem_close(table.enter);
-	sem_close(table.write_msg);
+	sem_close(table.m_msg);
 	free(philos);
 }
 

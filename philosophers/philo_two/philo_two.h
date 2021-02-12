@@ -39,22 +39,17 @@ typedef struct		s_philo
 	pthread_t		tid;
 }					t_philo;
 
-t_table		table;
-t_philo		*philos;
+t_table		g_table;
+t_philo		*g_philos;
 
 void				*philo_act(void *philo);
 void				*philo_monitor(void *philo);
-void				init_sem(void);
-void				clear_sem(void);
 void				init_philos(void);
 void				less_error_sleep(unsigned long itime);
 void				init_table(void);
-
-char				*ft_itoa(int n);
-char				*get_name(int i);
+void				clean_table(void);
 
 int					ft_atoi(char *str);
-int					ft_strlen(char *s);
 int					parse(char **argv);
 int					msg(t_philo *philo, int msg, unsigned long current_time);
 int					eat(t_philo *philo);
