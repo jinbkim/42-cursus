@@ -14,7 +14,7 @@
 
 int		msg(t_philo *philo, int msg, unsigned long cur)
 {
-	usleep(100);
+	usleep(200);
 	sem_wait(g_table.m_msg);
 	if (g_table.dead)
 	{
