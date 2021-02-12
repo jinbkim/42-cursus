@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_two.h                                        :+:      :+:    :+:   */
+/*   philo_three.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinbkim <jinbkim@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_TWO_H
-# define PHILO_TWO_H
+#ifndef PHILO_THREE_H
+# define PHILO_THREE_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -19,6 +19,7 @@
 # include <pthread.h>
 # include <string.h>
 # include <semaphore.h>
+# include <signal.h>
 # include <stdio.h>
 
 # define TAKEN_FORK	0
@@ -38,7 +39,6 @@ typedef struct		s_table
 	unsigned long	base_time;
 	int				eat;
 	int				dead;
-
 	sem_t			*enter;
 	sem_t			*m_msg;
 }					t_table;
@@ -48,7 +48,7 @@ typedef struct		s_philo
 	int				nbr;
 	int				eat;
 	unsigned long	last_eat;
-	pthread_t		tid;
+	pid_t			pid;
 }					t_philo;
 
 t_table				g_table;
@@ -57,15 +57,16 @@ t_philo				*g_philos;
 void				*philo_act(void *philo);
 void				*philo_monitor(void *philo);
 void				init_philos(void);
-void				less_error_sleep(unsigned long itime);
+void				process_monitor(void);
 void				init_table(void);
+void				less_error_sleep(unsigned long itime);
 void				clean_table(void);
 
 int					ft_atoi(char *str);
 int					parse(char **argv);
 int					msg(t_philo *philo, int msg, unsigned long current_time);
 int					eat(t_philo *philo);
+int					kill_process(void);
 
 unsigned long		get_time(void);
-
 #endif

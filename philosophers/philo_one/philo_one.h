@@ -51,8 +51,8 @@ typedef struct		s_philo
 	pthread_t		tid;
 }					t_philo;
 
-t_table		g_table;
-t_philo		*g_philos;
+t_table				g_table;
+t_philo				*g_philos;
 
 void				*philo_act(void *philo);
 void				*philo_monitor(void *philo);
