@@ -6,7 +6,7 @@
 /*   By: jinbkim <jinbkim@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 18:46:35 by jinbkim           #+#    #+#             */
-/*   Updated: 2021/02/11 18:48:07 by jinbkim          ###   ########.fr       */
+/*   Updated: 2021/02/12 13:04:41 by jinbkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,14 @@ void	init_table(void)
 	i = -1;
 	while (++i < g_table.num_philo)
 	{
-		g_philos[i].nbr = i+1;
+		g_philos[i].nbr = i + 1;
 		g_philos[i].eat = 0;
 	}
 	g_table.eat = 0;
 	g_table.dead = 0;
 	g_table.base_time = get_time();
-	g_table.enter = sem_open("/enter", O_CREAT | O_EXCL, 0777, g_table.num_philo / 2);
+	g_table.enter = sem_open("/enter", O_CREAT | O_EXCL, 0777,
+			g_table.num_philo / 2);
 	g_table.m_msg = sem_open("/m_msg", O_CREAT | O_EXCL, 0777, 1);
 	sem_unlink("/enter");
 	sem_unlink("/m_msg");
