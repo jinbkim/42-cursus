@@ -7,6 +7,8 @@
 // 3. 존재하지 않는 인덱스를 입력하면 wrong index 출력
 // 전에 틀린이유는 처음에 명령어를 입력받을때 getline함수로 한줄을 읽는게 아니라 cin 으로 입력받아서 ADD ASDAS 이런식으로 읽으면 ADD를 읽게되고 ASDAS를 다음인자 로 받게되는 이상하게 처리가됬었음
 
+// 보통 클래스의 변수들은 private, 함수들은 public
+
 #include "phoneBook.hpp"
 
 void	print(const char *s)
@@ -24,10 +26,8 @@ int		main(void)
 		print("My Awesome PhoneBook");
 		std::cout<<"select (ADD, SEARCH, EXIT) : ";
 		std::getline(std::cin, cmd);  // 명령어 읽기
-		// std::cin>>cmd;  // 명령어 읽기
 		if (std::cin.eof())  // eof(ctrl+d)를 만나면
 			return (-1);  // 에러표사
-		// std::cin.ignore();  // 버퍼에 남은 개행 제거
 		std::cout<<"-------------------------------------------\n\n";
 		if (cmd == "ADD")  // 폰북에 데이터 추가
 			pb.addContact();
