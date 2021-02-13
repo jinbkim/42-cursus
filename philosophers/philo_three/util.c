@@ -37,9 +37,12 @@ unsigned long	get_time(void)
 	struct timeval		tv;
 
 	gettimeofday(&tv, NULL);
-	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);  // s와 us을 ms단위로 변환
 }
 
+// usleep을 오차가 적게 사용하기위한 함수
+// usleep(100) 이면, 사실 100us이상 sleep을 함. 오차가 있음
+// usleep(100)을 10번돌리는것이 usleep(1000)을 한번돌리는것보다 오차가 적음
 void			less_error_sleep(unsigned long input)
 {
 	unsigned long	base;
