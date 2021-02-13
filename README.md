@@ -16,15 +16,18 @@
 ### 2020.09
 - minishell (100 / 115)
 ### 2021.01
-- ft_services (100/100)
+- ft_services (100 / 100)
 ### 2021.02
-- cpp_module 00~08(100/100)
+- philosophers (100 / 100)
+### 2021.03
+- cpp_module 00~08(100 / 100)
 
 ## 과제 흥미
 ### 재밌음
 - get_next_line
 - printf
 - minishell
+- philosophers
 ### 쏘쏘
 - libft
 - cub3d
