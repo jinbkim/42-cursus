@@ -14,7 +14,6 @@
 
 int		msg(t_philo *philo, int msg, unsigned long cur)
 {
-	usleep(300);
 	sem_wait(g_table.m_msg);
 	if (g_table.dead)
 		return (sem_post(g_table.m_msg) + 100);
@@ -33,7 +32,7 @@ int		msg(t_philo *philo, int msg, unsigned long cur)
 	else if (msg == DEAD)
 	{
 		printf(" died\n");
-		g_table.dead = 1;
+		return (1);
 	}
 	sem_post(g_table.m_msg);
 	return (0);
