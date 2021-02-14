@@ -2,7 +2,7 @@
 
 ZombieHorde::ZombieHorde(int n)
 {
-	srand(time(NULL));  // 난수사용을 위해
+	srand(clock());  // 난수사용을 위해
 
 	std::string	name;
 	std::string	type[3] = {"student", "baeksu", "programmer"};
