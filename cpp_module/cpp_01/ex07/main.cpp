@@ -46,7 +46,7 @@ int		main(int argc, char **argv)
 			line.replace(pos, s1.length(), s2);  // s1의 문자열을 s2로 변경
 		}
 		ofs<<line;  // 변경된 문자열 출력할 파일에 넣기
-		if (!ifs.eof())  // 읽을 파일을 다읽었다면
+		if (!ifs.eof())  // 읽을 파일을 다 안읽었다면
 			ofs<<'\n';  // 출력할 파일에 개행추가
 	}
 	ifs.close();  // 읽을 파일 닫기
