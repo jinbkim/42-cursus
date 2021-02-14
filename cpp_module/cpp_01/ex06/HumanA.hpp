@@ -8,7 +8,7 @@ class HumanA
 {
 private:
 	std::string	name;
-	Weapon	&weapon;  // 참조자
+	Weapon	&weapon ;  // 참조자
 
 public:
     HumanA(std::string name, Weapon& weapon);  // 이름과 무기를 받는 생성자
@@ -17,3 +17,9 @@ public:
 
 
 #endif
+
+int a=10, b= 20
+
+int &c = a;
+
+c = b;

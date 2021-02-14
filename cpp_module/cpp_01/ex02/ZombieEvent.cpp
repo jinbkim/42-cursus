@@ -14,7 +14,7 @@ Zombie* ZombieEvent::newZombie(std::string name)
 
 void    ZombieEvent::randomChump(void)
 {
-	srand(time(NULL));  // 난수사용을 위해
+	srand(clock());  // 난수사용을 위해
 
 	std::string	name;
 	int		size = rand()%10+4;  // name의 크기 : 4 ~ 13 중 난수

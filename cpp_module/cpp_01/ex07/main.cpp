@@ -47,7 +47,7 @@ int		main(int argc, char **argv)
 		}
 		ofs<<line;  // 변경된 문자열 출력할 파일에 넣기
 		if (!ifs.eof())  // 읽을 파일을 다읽었다면
-		ofs<<'\n';  // 출력할 파일에 개행추가
+			ofs<<'\n';  // 출력할 파일에 개행추가
 	}
 	ifs.close();  // 읽을 파일 닫기
 	ofs.close();  // 출력할 파일 닫기
