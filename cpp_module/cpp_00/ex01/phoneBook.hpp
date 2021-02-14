@@ -3,7 +3,7 @@
 
 # include "info.hpp"
 # include <iomanip>  // setw
-# define SIZE   3
+# define SIZE   8
 
 class   phoneBook
 {
