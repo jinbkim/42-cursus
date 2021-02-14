@@ -20,6 +20,7 @@ ZombieHorde::ZombieHorde(int n)
 	}
 }
 
+// 모든 좀비가 소리지르는 함수
 void		ZombieHorde::announce(void)
 {
 	for(int i=0; i<n; i++)

@@ -26,6 +26,7 @@ int		main(void)
 		print("My Awesome PhoneBook");
 		std::cout<<"select (ADD, SEARCH, EXIT) : ";
 		std::getline(std::cin, cmd);  // 명령어 읽기
+		
 		if (std::cin.eof())  // eof(ctrl+d)를 만나면
 			return (-1);  // 에러표사
 		std::cout<<"-------------------------------------------\n\n";

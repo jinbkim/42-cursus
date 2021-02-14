@@ -3,16 +3,17 @@
 
 # include "Weapon.hpp"
 
+// 이름과 무기(포인터)를 가지는 함수
 class HumanB
 {
 private:
 	std::string	name;
-	Weapon	*weapon;
+	Weapon	*weapon;  // 포인터
 
 public:
-	HumanB(std::string name);
-    void    setWeapon(Weapon &weapon);
-	void    attack();
+	HumanB(std::string name);  // 이름을 받는 생성자
+    void    setWeapon(Weapon &weapon);  // 무기를 변경하는 함수
+	void    attack();  // 공격을 한다고 출력하는 함수
 };
 
 #endif

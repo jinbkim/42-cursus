@@ -3,6 +3,9 @@
 // 파일이 열리고 파일내에 있는 문자열 s1이 s2로 변경된 FILENAME.replace이 만들어짐
 // 테스트 파일도 제출할것
 
+// 파일을 읽을떄 std::ifstream ifs를 이용
+// 파일을 출력할때 std::ofstream ofs를 이용
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -37,7 +40,7 @@ int		main(int argc, char **argv)
 	{
 		while (true)
 		{
-			pos = line.find(s1);  // 한줄읽은 line에 문자열이 s1 있는 위치
+			pos = line.find(s1);  // 한줄읽은 line에 문자열이 s1 있는 위치찾기
 			if (pos == std::string::npos)  // line에 s1 문자열이 없으면
 				break ;
 			line.replace(pos, s1.length(), s2);  // s1의 문자열을 s2로 변경

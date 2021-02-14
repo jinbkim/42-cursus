@@ -5,6 +5,7 @@ void    ZombieEvent::setZombieType(std::string type)
     this->type = type;
 }
 
+// 동적할당하여 좀비를 만드는 함수
 Zombie* ZombieEvent::newZombie(std::string name)
 {
 	Zombie	*z = new Zombie(name, type);

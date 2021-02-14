@@ -12,8 +12,8 @@ private:
 
 public:
 	void    setZombieType(std::string type);
-	Zombie* newZombie(std::string name);
 	void    randomChump();
+	Zombie* newZombie(std::string name);
 };
 
 #endif
