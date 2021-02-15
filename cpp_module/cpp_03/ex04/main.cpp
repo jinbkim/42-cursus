@@ -47,7 +47,7 @@ int     main(void)
 	for(int i=1; i<=5; i++)
 	{
 		std::cout<<"----- "<<i<<"st random attack! -----\n";
-		sleep(1);
+		usleep(1);
 		jinbkim.takeDamage(yapark.vaulthunter_dot_exe(jinbkim.name));  // yapark이 랜덤무기로 jinbkim 공격
 		jinbkim.show_state();
 		yapark.show_state();

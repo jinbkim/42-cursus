@@ -57,8 +57,8 @@ FragTrap::~FragTrap()
 
 unsigned int	FragTrap::vaulthunter_dot_exe(std::string const &target)
 {
-	srand(time(NULL));
-
+	srand(clock());
+	
 	if (ep < 25)
 	{
         std::cout<<name<<" is out of energy!\n";

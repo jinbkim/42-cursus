@@ -1,20 +1,10 @@
-// NinjaTrap 클래스 만들기
-// 전에 만든 클래스 모두 사용하기
+// ClapTrap를 상속받은 NinjaTrap 클래스 만들기
 
-// 멤버 변수
-// Hit points (60)
-// Max hit points (60)
-// Energy points (120)
-// Max energy points (120)
-// Level (1)
-// Name (Parameter of constructor)
-// Melee attack damage (60)
-// Ranged attack damage (5)
-// Armor damage reduction (0)
+// 멤버변수의 초기값이 FragTrap과 ScavTrap과 조금 다름 (pdf에 나와있음)
 
-// ninjaShoebox 함수 만들기
+// special attack인 ninjaShoebox 함수 만들기
 // 함수의 인자를 각각 다른 클래스를 참조자로 받음
-// 각각 다른 클래스를 참조자로 인자만 다른 함수
+// 각각 다른 클래스를 참조자로 인자만 다른 ninjaShoebox 함수를 오버로딩 하여 4개 만들기
 // 각각 다른 동작을 함
 // 자유롭게 만들기
 

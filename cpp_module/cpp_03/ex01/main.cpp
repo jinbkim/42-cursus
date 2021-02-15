@@ -1,22 +1,10 @@
 // ex00에서 만든 FragTrap 클래스 + ScavTrap 클래스 만들기
 
-// 멤버 변수
-// 초기값이 조금 달라짐
-// Hit points (100)
-// Max hit points (100)
-// Energy points (50)
-// Max energy points (50)
-// Level (1)
-// Name (Parameter of constructor)
-// Melee attack damage (20)
-// Ranged attack damage (15)
-// Armor damage reduction (3)
+// ScavTrap 클래스 만들기
+// FragTrap와 초기값이 조금 달라짐
 
 // FragTrap과 같은 함수를 쓰지만 생성자, 소멸자, 공격함수에서 출력하는 문장들이 달라야함
-// rangedAttack(std::string const & target)
-// meleeAttack(std::string const & target)
-// takeDamage(unsigned int amount)
-// beRepaired(unsigned int amount)
+// FragTrap에서는 이름에 []를 붙여줬음
 
 // 이클래스 에서는 랜덤으로 공격하는 vaulthunter_dot_exe 함수가 없음
 // 대신 랜덤으로 challenge하는 challengeNewcomer 함수 만들기
@@ -48,11 +36,13 @@ int     main(void)
 	// for(int i=1; i<=5; i++)
 	// {
 	// 	std::cout<<"----- "<<i<<"st random attack! -----\n";
-	// 	sleep(1);
+	// 	usleep(10);  // srand(clock()) 함수가 1us 기준으로 난수를 생성하기때문에 조금 쉬었음
 	// 	jinbkim.takeDamage(yapark.vaulthunter_dot_exe(jinbkim.name));  // yapark이 랜덤무기로 jinbkim 공격
 	// 	jinbkim.show_state();
 	// 	yapark.show_state();
 	// }
+
+
 
 	ScavTrap	jinbkim("jinbkim");
 	ScavTrap	yapark("yapark");
@@ -76,7 +66,7 @@ int     main(void)
 	for(int i=1; i<=3; i++)
 	{
 		std::cout<<"----- "<<i<<"st random challenge! -----\n";
-		sleep(1);
+		usleep(10);  // srand(clock()) 함수가 1us 기준으로 난수를 생성하기때문에 조금 쉬었음
 		jinbkim.challengeNewcomer();  // jinbkim의 랜덤 도전
 	}
 }

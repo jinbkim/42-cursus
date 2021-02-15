@@ -1,21 +1,4 @@
-// FragTrap 클래스 만들기
-
-// 멤버 변수
-// Hit points (100)
-// Max hit points (100)
-// Energy points (100)
-// Max energy points (100)
-// Level (1)
-// Name (Parameter of constructor)
-// Melee attack damage (30)
-// Ranged attack damage (20)
-// Armor damage reduction (5)
-
-// 멤버 함수
-// rangedAttack(std::string const & target)
-// meleeAttack(std::string const & target)
-// takeDamage(unsigned int amount)
-// beRepaired(unsigned int amount)
+// 과제에서 만들라고 한대로 FragTrap 클래스 만들기
 
 // 생성자와 소멸자가 호출될때 표시하기
 
@@ -23,7 +6,7 @@
 // energy의 최댜값은 max energy
 // repair를 계속해도 hit의 최대값은 max hit, 최소값은 0
 
-// 랜덤으로 공격하는 vaulthunter_dot_exe 함수 만들기
+// 최소 5개의 무기로 랜덤으로 공격하는 vaulthunter_dot_exe 함수 만들기
 // 이 공격을 하면 25 에너지가 소비됨
 
 #include "FragTrap.hpp"
@@ -52,7 +35,7 @@ int     main(void)
 	for(int i=1; i<=5; i++)
 	{
 		std::cout<<"----- "<<i<<"st random attack! -----\n";
-		sleep(1);
+		usleep(10);  // srand(clock()) 함수가 1us 기준으로 난수를 생성하기때문에 조금 쉬었음
 		jinbkim.takeDamage(yapark.vaulthunter_dot_exe(jinbkim.name));  // yapark이 랜덤무기로 jinbkim 공격
 		jinbkim.show_state();
 		yapark.show_state();

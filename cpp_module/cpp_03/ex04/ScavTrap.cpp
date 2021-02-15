@@ -57,7 +57,7 @@ ScavTrap::~ScavTrap()
 
 void            ScavTrap::challengeNewcomer(void)
 {
-	srand(time(NULL));
+	srand(clock());
 	std::string	chall[5] =
 	{
 		"You have to get up at 7 am!",
