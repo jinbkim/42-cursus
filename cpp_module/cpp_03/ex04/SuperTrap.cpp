@@ -1,5 +1,6 @@
 #include "SuperTrap.hpp"
 
+// 기본생성자
 SuperTrap::SuperTrap()
 {
     name = "unknown";
@@ -14,7 +15,8 @@ SuperTrap::SuperTrap()
 	std::cout<<"[SUPER] "<<name<<" player joined the game!\n";
 }
 
-SuperTrap::SuperTrap(std::string name) : ClapTrap(name), FragTrap(name), NinjaTrap(name)
+// 이름을 인자로 받는 생성자
+SuperTrap::SuperTrap(std::string name)
 {
     this->name = name;
     hp = 100;
@@ -28,13 +30,14 @@ SuperTrap::SuperTrap(std::string name) : ClapTrap(name), FragTrap(name), NinjaTr
 	std::cout<<"[SUPER] "<<name<<" player joined the game!\n";	
 }
 
+// 복사생성자
 SuperTrap::SuperTrap(const SuperTrap & ref)
 {
     *this = ref;
 	std::cout<<"[SUPER] "<<name<<" player joined the game!\n";	
 }
 
-
+// 대입 연산자 오버로딩
 SuperTrap& SuperTrap::operator=(const SuperTrap & ref)
 {
     this->name = ref.name;
@@ -49,17 +52,19 @@ SuperTrap& SuperTrap::operator=(const SuperTrap & ref)
     return (*this);    
 }
 
+// 소멸자
 SuperTrap::~SuperTrap()
 {
 	std::cout<<"[SUPER] "<<name<<" player left the game!\n";
 }
 
-
+// SuperTrap의 rangedAttack은 FragTrap의 rangedAttack를 사용
 unsigned int    SuperTrap::rangedAttack(std::string const &target)
 {
     return (FragTrap::rangedAttack(target));
 }
 
+// SuperTrap의 meleeAttack은 NinjaTrap의 meleeAttack를 사용
 unsigned int    SuperTrap::meleeAttack(std::string const &target)
 {
     return (NinjaTrap::meleeAttack(target));

@@ -3,7 +3,7 @@
 
 # include "NinjaTrap.hpp"
 
-class SuperTrap : public FragTrap, public NinjaTrap
+class SuperTrap : public FragTrap, public NinjaTrap  // 두개의 클래스 상속
 {
 public:
 	SuperTrap();

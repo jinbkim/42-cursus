@@ -1,21 +1,15 @@
 // SuperTrap 클래스 만들기
 // FragTrap 클래스와 NinjaTrap 클래스를 둘다 상속
 
-// Hit points (Fragtrap)
-// Max hit points (Fragtrap)
-// Energy points (Ninjatrap)
-// Max energy points (Ninjatrap)
-// Level (1)
-// Name (Parameter of constructor)
-// Melee attack damage (Ninjatrap)
-// Ranged attack damage (Fragtrap)
-// Armor damage reduction (Fragtrap)
-// rangedAttack (Fragtrap)
-// meleeAttack (Ninjatrap)
-
+// SuperTrap 클래스의 초기값은 FragTrap 클래스와 NinjaTrap 클래스의 초기값이 짬뽕되게 가짐
 // 두 클래스의 special attacks 을 가짐
 
-// 가상상속으로 겹치는 상위클래스를 한번만 상속할수 있음
+// 가상상속으로 겹치는 상위클래스를 한번만 상속할수 있음
+
+// SuperTrap의 rangedAttack은 FragTrap의 rangedAttack를 사용
+// SuperTrap의 meleeAttack은 NinjaTrap의 meleeAttack를 사용
+
+// SuperTrap은 상속받은 NinjaTrap과 FragTrap의 special attack을 사용할수 있음
 
 #include "SuperTrap.hpp"
 
