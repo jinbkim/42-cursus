@@ -6,7 +6,7 @@
 class Fixed
 {
 private:
-	int					val;
+	int					val;  // floating point value가 저장되는 변수
 	static const int	bits=8;
 
 public:
@@ -17,8 +17,8 @@ public:
 	~Fixed();  // 소멸자
 	Fixed& operator=(const Fixed &ref);   // 대입 연산자 오버로딩
 
-	int     getRawBits(void) const;
-	void    setRawBits(int const raw);
+	int     getRawBits(void) const;  // 값을 반환하는 함수
+	void    setRawBits(int const raw);  // 값을 변경하는 함수
 	float   toFloat(void) const;  // 실수로 변환
     int     toInt(void) const;  // 정수로 변환
 };
