@@ -13,7 +13,6 @@ typedef struct      s_list
 class Squad: public ISquad
 {
 private:
-
 	t_list	*head;
 	int		num;
 
