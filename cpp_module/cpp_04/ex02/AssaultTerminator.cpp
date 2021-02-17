@@ -9,7 +9,7 @@ AssaultTerminator::AssaultTerminator()
 // 복사 생성자
 AssaultTerminator::AssaultTerminator(const AssaultTerminator &ref)
 {
-    *this = ref;
+	(AssaultTerminator)ref; 
     std::cout<<"* teleports from space *\n";
 }
 

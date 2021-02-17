@@ -3,7 +3,6 @@
 
 # include "ICharacter.hpp"
 
-
 // abstract class : 하나 이상의 순수 가상함수가 선언된 클래스
 // 순수 가상 함수 :선언만 있고 함수의 몸체가 정의되지 않은 가상 함수
 class AMateria
@@ -21,7 +20,7 @@ public:
 
 	std::string const	&getType() const;
 	unsigned int		getXP() const;
-	virtual AMateria	*clone() const = 0;
+	virtual AMateria	*clone() const = 0;  // 순수 가상함수
 	virtual void		use(ICharacter &target);
 };
 

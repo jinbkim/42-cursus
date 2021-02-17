@@ -9,14 +9,14 @@ TacticalMarine::TacticalMarine()
 // 복사 생성자
 TacticalMarine::TacticalMarine(const TacticalMarine &ref)
 {
-    *this = ref;
+	(TacticalMarine)ref;
     std::cout<<"Tactical Marine ready for battle!\n";
 }
 
 // 대입연산자
 TacticalMarine& TacticalMarine::operator=(const TacticalMarine &ref)
 {
-	(TacticalMarine) ref;
+	(TacticalMarine)ref;
     return (*this);
 }
 

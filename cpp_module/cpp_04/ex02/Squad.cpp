@@ -1,108 +1,89 @@
 #include "Squad.hpp"
 
 // 기본 생성자
-Squad::Squad()
+Squad::Squad() : count(0), units(nullptr)
 {
-    num = 0;
-    head = NULL;
+
 }
 
-// 복사 생성자
-Squad::Squad(const Squad &ref)
+// 생성자
+Squad::Squad(Squad const &other): count(0), units(nullptr)
 {
-    *this = ref;
+	for (int i = 0; i < other.getCount(); i++)  // 인자의 getCount 만큼 반복
+		this->push(other.getUnit(i)->clone());  // 클론된 유닛 복제
 }
 
 // 소멸자
+// 가지고있는 units 메모리 모두 해제
 Squad::~Squad()
 {
-    t_list  *cur = head;
-    t_list  *next;
-	int		i=-1;
-
-	// 가지고있는 unit들 메모리 모두 해제
-	std::cout<<"22222\n";
-	std::cout<<"num : "<<num<<'\n';
-    while (++i < num)
-    {
-		std::cout<<"hi!\n";
-        next = cur->next;
-        delete cur->unit;
-        delete cur;
-        cur = next;
-    }
-}
-
-// 대입연산자 오버로딩
-Squad& Squad::operator=(const Squad &ref)
-{
-	// std::cout<<"===========\n";
-    t_list  *cur;
-	t_list	*next;
-
-    cur = head;
-	// 반환받는 값에 원래 존재하던 값은 모두 지워져야함
-	if (!num)
+	if (this->units)
 	{
-		while (cur)
-		{
-			next = cur->next;
-			delete cur->unit;
-			delete cur;
-			cur = next;
-		}
+		for (int i = 0; i < this->count; i++)
+			delete this->units[i];
+		delete this->units;
 	}
-	// 참조자값만 복사하는것이 아닌 객체 자체를 복사하는 깊은 복사를함 
-    for (int i = 0 ; i < ref.getCount(); i++)
-        push(ref.getUnit(i));
-    return (*this);
 }
 
-
-
-// num을 반환하는 함수
-int				Squad::getCount() const
+// 대입 연산자 오버로딩
+Squad &Squad::operator=(Squad const &other)
 {
-    return (num);
-}
-
-// 인덱스를 받아 unit을 반환하는 함수
-ISpaceMarine*	Squad::getUnit(int idx) const
-{
-    t_list *cur;
-
-    if (getCount() <= idx)
-        return (NULL);   
-    cur = head;
-    for(int i = 0 ; i < idx ; i++)
-        cur = cur->next;
-    return (cur->unit);
-}
-
-// 연결리스트의 맨끝에 인자로받은 unit을 추가하는 함수
-int             Squad::push(ISpaceMarine* marine)
-{
-    t_list  *cur;
-    t_list  *newMarine;
-
-
-    newMarine = new t_list;
-    newMarine->unit = marine;
-    newMarine->next = NULL;
-    cur = head;
-    if (!cur)
-    {
-        head = newMarine;
-		head->next = NULL;
-        return (++num);
-    }
-	std::cout<<"======\n";
-	int i=0;
-    while (cur->next)
+	// 이미 존재하면, 지우고 시작하기
+	if (this->units)
 	{
-		std::cout<<"i : "<<++i<<'\n';
-        cur = cur->next;
+		// std::cout<<"delete!\n";
+		for (int i = 0; i < this->count; i++)
+			delete this->units[i];
+		delete this->units;
+		this->units = nullptr;
 	}
-    cur->next = newMarine;
-    return (++num);
+
+	// 참조자만 복사하는 얕은복사가아닌 객체 자체를 복사하는 깊은 복사를함 
+	this->count = 0;
+	for (int i = 0; i < other.getCount(); i++)
+		this->push(other.getUnit(i)->clone());
+	return (*this);
+}
+
+// unit 개수인 count 복사
+int Squad::getCount(void) const
+{
+	return (count);
+}
+
+// 인덱스를 참고하여 unit을 반환
+ISpaceMarine* Squad::getUnit(int index) const
+{
+	// 개수가 0개거나 이상한 인덱스 참고시 
+	if (!count || index<0 || count<=index)
+		return (nullptr);
+	return (units[index]);
+}
+
+int Squad::push(ISpaceMarine *unit)
+{
+	if (this->units)
+	{
+		// 이미 들어있는 unit이 들어오면 아무처리를 하지않고 반환됨
+		for (int i = 0; i < this->count; i++)
+			if (this->units[i] == unit)
+				return (this->count);
+		
+		ISpaceMarine **cpy = new ISpaceMarine*[this->count + 1];
+		for (int i = 0; i < this->count; i++)
+			cpy[i] = this->units[i];  // 전에있었던 units 복사
+		delete[] this->units;  // 기존의 units 지우기
+		this->units = cpy;
+		this->units[this->count] = unit;  // 새로들어온 unit 추가
+		this->count++;  // 개수 증가
+	}
+
+	// units에 아무것도 없을때
+	else
+	{
+		this->units = new ISpaceMarine*[1];
+		this->units[0] = unit;
+		this->count = 1;
+	}
+	return (this->count);
 }

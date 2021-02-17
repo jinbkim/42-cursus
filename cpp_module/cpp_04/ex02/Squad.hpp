@@ -1,20 +1,14 @@
 #ifndef SQUAD_HPP
 # define SQUAD_HPP
 
-#include "ISquad.hpp"
-#include "ISpaceMarine.hpp"
-
-typedef struct      s_list
-{
-	ISpaceMarine	*unit;
-	struct s_list	*next;
-}                   t_list;
+# include <cstddef>
+# include "ISquad.hpp"
 
 class Squad: public ISquad
 {
 private:
-	t_list	*head;
-	int		num;
+	int count;
+	ISpaceMarine **units;
 
 public:
 	Squad();

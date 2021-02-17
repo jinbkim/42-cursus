@@ -5,6 +5,9 @@
 
 // 가상함수에 대해 알아가는 문제
 
+// Peon은 Victim을 상속받음
+// Victim에서 getPolymorphed를 가상함수로 만들어주면서 Victim을 상속받은 Peon에서 getPolymorphed를 재정의함
+
 // 클래스에서 가상 함수를 정의할 때 소멸자도 가상함수로 만들어야 함
 
 // Sorcerer클래스는 매개변수가 없으면 객체를 못만들게 만들어야함

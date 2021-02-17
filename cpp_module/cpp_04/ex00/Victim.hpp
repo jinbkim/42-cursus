@@ -21,6 +21,8 @@ public:
     std::string getName() const;
 	// 가상함수 : 상위 클래스 내에서 선언되어 하위 클래스에 의해 재정의 되는 멤버 함수
 	virtual void    getPolymorphed() const;
+	// void    getPolymorphed() const;
+
 };
 
 std::ostream& operator<<(std::ostream& os, const Victim &ref);

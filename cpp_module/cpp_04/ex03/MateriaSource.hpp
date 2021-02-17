@@ -3,7 +3,7 @@
 
 #include "IMateriaSource.hpp"
 
-class MateriaSource : public IMateriaSource
+class MateriaSource : public IMateriaSource  // IMateriaSource를 상속받음
 {
 private:
 	int			_count;

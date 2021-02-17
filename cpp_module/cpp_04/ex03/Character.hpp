@@ -8,7 +8,7 @@ class Character : public ICharacter
 private:
 	std::string	_name;
 	int			_equipped;
-	AMateria	*_inventory[4];
+	AMateria	*_inventory[4];  // 4개 AMateria 저장가능
 
 	Character();
 
