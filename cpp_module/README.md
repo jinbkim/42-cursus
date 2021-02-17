@@ -27,5 +27,9 @@
 - protected
 - virtual function
 - virtual desconstructor
+- pure virtual function
 - abstract class
 - multiple inheritance
+### cpp04
+- interface class
+### cpp05

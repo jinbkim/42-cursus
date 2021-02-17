@@ -23,6 +23,7 @@
 int main(void)
 {
 	Fixed a;  // 기본 생성자
+	// Fixed b = a; 
 	Fixed b(a);  // 복사생성자
 	Fixed c;  // 기본 생성자
 
