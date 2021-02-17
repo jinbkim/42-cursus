@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 // name과 grade를 인자로 받는 생성자
 Bureaucrat::Bureaucrat(const std::string &name, int grade) :_name(name), _grade(grade)
@@ -34,6 +35,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& ref)
 // 소멸자
 Bureaucrat::~Bureaucrat()
 {
+
 }
 
 
@@ -66,21 +68,31 @@ void            Bureaucrat::downGrade()
     _grade += 1;
 }
 
+// 
+void                Bureaucrat::signForm(Form& ref)
+{
+    try
+    {
+        ref.beSigned(*this);
+        std::cout << _name << " signs " << ref.getName() << "." << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << _name << " cannot sign " << ref.getName() << " because ";
+        std::cerr << e.what() << '\n';
+    }
+}
 
-
-// std::exception class의 what 함수를 오버라이딩 하여 예외처리 함수를 내맘대로 만듬
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("BureaucratException: Grade too High");
 }
 
-// std::exception class의 what 함수를 오버라이딩 하여 예외처리 함수를 내맘대로 만듬
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("BureaucratException: Grade too Low");
 }
 
-// Bureaucrat 객체를 cout으로 출력하기위해 <<연산자 오버로딩을 해줌
 std::ostream&   operator<<(std::ostream &os, const Bureaucrat &ref)
 {
     return (os << ref.getName() << ", bureaucrat grade " << ref.getGrade() << std::endl);

@@ -1,36 +1,40 @@
 #ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 
-# include <iostream>
-# include <string>
+#include <string>
+#include <iostream>
 
 class Bureaucrat
 {
 private:
-    std::string const name;
-    int grade; //1~150
-    Bureaucrat();
+	const std::string   _name;
+	int                 _grade;
+	Bureaucrat();
+
 public:
-    Bureaucrat(std::string name, int grade);
-    Bureaucrat(Bureaucrat const &b);
-    Bureaucrat &operator=(Bureaucrat const &b);
-    virtual ~Bureaucrat();
+	Bureaucrat(const std::string &name, int grade);
+	Bureaucrat(const Bureaucrat& ref);
+	Bureaucrat& operator=(const Bureaucrat& ref);
+	virtual ~Bureaucrat();
 
-    class GradeTooHighException : public std::exception
-    {
-        virtual const char *what() const throw();
-    };
-    class GradeTooLowException : public std::exception
-    {
-        virtual const char *what() const throw();
-    };
+	std::string	getName() const;
+	int			getGrade() const;
+	void		upGrade();
+	void		downGrade();
 
-    std::string const &getName() const;
-    int getGrade() const;
-    void incrementGrade();
-    void decrementGrade();
+	class GradeTooHighException : public std::exception  // std::exception 클래스를 상속받음
+	{
+	public:
+		virtual const char* what() const throw();
+	};
+	class GradeTooLowException : public std::exception  // std::exception 클래스를 상속받음
+	{
+	public:
+		virtual const char* what() const throw();
+	};
 };
 
-std::ostream& operator<<(std::ostream &os, Bureaucrat &b);
+// Bureaucrat 객체를 cout으로 출력하기위해 <<연산자 오버로딩을 해줌
+std::ostream&   operator<<(std::ostream &os, const Bureaucrat &ref);
 
 #endif

@@ -38,6 +38,7 @@ Squad &Squad::operator=(Squad const &other)
 		this->units = nullptr;
 	}
 
+	*this = other;
 	// 참조자만 복사하는 얕은복사가아닌 객체 자체를 복사하는 깊은 복사를함 
 	this->count = 0;
 	for (int i = 0; i < other.getCount(); i++)
