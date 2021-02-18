@@ -1,55 +1,45 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yechoi <yechoi@student.42seoul.kr>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/19 11:44:14 by yechoi            #+#    #+#             */
-/*   Updated: 2020/11/24 09:23:40 by yechoi           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// pdf에서 class 만들라고 한거대로 만들기
+
+// Form객체 만들기
+// Form(std::string name, int signGrade, int executeGrade)
+// signGrade 이상부터 sign가능, executeGrade 이상부터  execute가능
+// executeGrade내용은 ex02에 나옴
+
+// Form 객체를 cout으로 출력하기위해 <<연산자 오버로딩을 해줌
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
 int     main(void)
 {
-    std::cout << "\033[1;31mFORM CLASS TEST\033[0m" << std::endl;
+	Form 		*f1;
+	try
+	{
+		f1 = new Form("f1", 0, 10);  // 1등급보다 높아서 예외처리
+	}
+	catch(const std::exception &e)
+	{
+		std::cout<<e.what()<<'\n';
+	}
 
-    Form formA("formA", 6, 100);
-    Form formB("formB", 3, 100);
-    Form formC("formC", 5, 40);
-    Form *formD;
-
-    std::cout << formA << formB << formC;
-
-    try
-    {
-        formD = new Form("formD", 0, 140);
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-
-    Bureaucrat D("D", 5);
-    try
-    {
-        D.signForm(formA);
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    
-    try
-    {
-        D.signForm(formB);
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+	Bureaucrat	b("b", 50);  // 50등급
+	Form 		f2("f2", 60, 10);  // 60등급부터 sign가능
+	Form 		f3("f3", 40, 10);  // 40등급부터 sign가능
+	try
+	{
+		b.signForm(f2);  // 60등급보다 높은 50등급이라 sign 가능
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		b.signForm(f3);  // 40등급보다 낮은 50등급이라 예외처리
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}	
     return 0;
 }

@@ -1,27 +1,18 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yechoi <yechoi@student.42seoul.kr>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 10:21:29 by yechoi            #+#    #+#             */
-/*   Updated: 2020/11/23 10:35:19 by yechoi           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// 로봇토미에게 부탁하는 클래스
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target)
-    : Form("Robotomy Request", 72, 45), _target(target)
+// 생성자
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("Robotomy Request", 72, 45), _target(target)
 {
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& ref)
-    : Form(ref), _target(ref._target)
+// 복사생성자
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& ref) : Form(ref), _target(ref._target)
 {
 }
 
+// 대입 연산자
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& ref)
 {
     if (this == &ref)
@@ -30,17 +21,19 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& r
     return (*this);
 }
 
+// 소멸자
 RobotomyRequestForm::~RobotomyRequestForm()
 {
 }
 
+// 로봇토미에게 부탁하는 함수
 void    RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
     Form::execute(executor);
     std::cout << "* rizzz...bzzz... *" << std::endl;
-    int ret = rand();
-    if(ret % 2)
+    int ret = rand();  // 랜덤 변수
+    if(ret % 2)  // 랜덤변수가 홀수이면 (50% 확률)
         std::cout << _target << " has been robotomized succesfully." << std::endl;
-    else
+    else  // 랜덤변수가 짝수이면 (50% 확률)
         std::cout << _target << " robotomization has failed." << std::endl;
 }

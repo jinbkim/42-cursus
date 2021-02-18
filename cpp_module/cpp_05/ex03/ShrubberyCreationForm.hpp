@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yechoi <yechoi@student.42seoul.kr>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/22 22:53:40 by yechoi            #+#    #+#             */
-/*   Updated: 2020/11/22 22:53:40 by yechoi           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// 관목숲을 만드는 클래스
 
 #ifndef SHRUBBERYCREATIONFORM_HPP
 # define SHRUBBERYCREATIONFORM_HPP
@@ -17,16 +7,17 @@
 
 class ShrubberyCreationForm : public Form
 {
-    private:
-        std::string _target;
-        ShrubberyCreationForm();
-    public:
-        ShrubberyCreationForm(std::string target);
-        ShrubberyCreationForm(const ShrubberyCreationForm& ref);
-        ShrubberyCreationForm& operator=(const ShrubberyCreationForm& ref);
-        ~ShrubberyCreationForm();
+private:
+	std::string _target;
+	ShrubberyCreationForm();
 
-        void    execute(Bureaucrat const & executor) const;
+public:
+	ShrubberyCreationForm(std::string target);
+	ShrubberyCreationForm(const ShrubberyCreationForm& ref);
+	~ShrubberyCreationForm();
+	ShrubberyCreationForm& operator=(const ShrubberyCreationForm& ref);
+
+	void    execute(Bureaucrat const & executor) const;
 };
 
 #endif

@@ -1,28 +1,19 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yechoi <yechoi@student.42seoul.kr>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 10:13:55 by yechoi            #+#    #+#             */
-/*   Updated: 2020/11/23 10:48:35 by yechoi           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// 관목숲을 만드는 클래스
 
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
-    : Form("Shrubbery Creation", 145, 137), _target(target)
+// 생성자
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("Shrubbery Creation", 145, 137), _target(target)
 {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& ref)
-    : Form(ref), _target(ref._target)
+// 복사생성자
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& ref) : Form(ref), _target(ref._target)
 {
 }
 
+// 대입연산자 오버로딩
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& ref)
 {
     if (this == &ref)
@@ -31,10 +22,12 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
     return (*this);
 }
 
+// 소멸자
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
 }
 
+// 관목숲을 만드는 함수
 void    ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
     Form::execute(executor);

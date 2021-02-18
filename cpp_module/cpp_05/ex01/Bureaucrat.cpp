@@ -68,31 +68,36 @@ void            Bureaucrat::downGrade()
     _grade += 1;
 }
 
-// 
+// sign을 해주는 함수
 void                Bureaucrat::signForm(Form& ref)
 {
     try
     {
-        ref.beSigned(*this);
+        ref.beSigned(*this);  // Signed을 해주는 함수
         std::cout << _name << " signs " << ref.getName() << "." << std::endl;
     }
-    catch(const std::exception& e)
+    catch(const std::exception& e)  // 예외처리
     {
         std::cout << _name << " cannot sign " << ref.getName() << " because ";
         std::cerr << e.what() << '\n';
     }
 }
 
+
+
+// std::exception class의 what 함수를 오버라이딩 하여 예외처리 함수를 내맘대로 만듬
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("BureaucratException: Grade too High");
 }
 
+// std::exception class의 what 함수를 오버라이딩 하여 예외처리 함수를 내맘대로 만듬
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("BureaucratException: Grade too Low");
 }
 
+// Bureaucrat 객체를 cout으로 출력하기위해 <<연산자 오버로딩을 해줌
 std::ostream&   operator<<(std::ostream &os, const Bureaucrat &ref)
 {
     return (os << ref.getName() << ", bureaucrat grade " << ref.getGrade() << std::endl);
