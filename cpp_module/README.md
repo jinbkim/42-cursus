@@ -33,3 +33,8 @@
 ### cpp04
 - interface class
 ### cpp05
+- exception handling
+- std::exception class
+### cpp06
+- casting operators
+### cpp07
