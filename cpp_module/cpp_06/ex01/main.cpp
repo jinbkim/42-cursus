@@ -39,7 +39,7 @@ void    *serialize(void)
 	s1[7] = '\0';
 	s2[7] = '\0';
     integer = rand();  // 랜덤 int형변수를 반환하는 함수
-    ptr = new char[sizeof(s1) + sizeof(s2) + sizeof(int)];  // 문자열2개의 크기와 int형변수의 크기만큼 메모리 할당
+    ptr = new char[sizeof(s1) + sizeof(int) + sizeof(s2)];  // 문자열2개의 크기와 int형변수의 크기만큼 메모리 할당
 	std::cout<<"s1 : "<<s1<<'\n';
 	std::cout<<"integer : "<<integer<<'\n';
 	std::cout<<"s2 : "<<s2<<'\n';

@@ -36,5 +36,8 @@
 - exception handling
 - std::exception class
 ### cpp06
-- casting operators
+- dynamic_cast
+- static_cast
+- const_cast
+- reinterpret_cast
 ### cpp07
