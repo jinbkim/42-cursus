@@ -1,74 +1,38 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yechoi <yechoi@student.42seoul.kr>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/27 13:00:55 by yechoi            #+#    #+#             */
-/*   Updated: 2020/11/30 18:08:52 by yechoi           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// 템플릿을 이용하여 배열 역할을 하는 클래스 만들기
+// const 객체도 인덱스에 접근 가능함
 
 #include "Array.hpp"
 #include <string>
 
-int main(int argc, char **argv)
+int main(void)
 {
-    unsigned int n;
-    
-    if (argc != 2)
-        return 0;
-    try
-    {
-        n = atoi(argv[1]);
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << "Invalid Argument." << '\n';
-        return 0;
-    }
-    
-    Array<int> integer(n);
-    Array<double> dd(n);
-    Array<char> character(n);
-    Array<std::string> string(n);
+	Array<int>	arr1(10);
+	for(int i=0; i<10 ; i++)
+		arr1[i] = i;
+	for(int i=0; i<10 ; i++)
+		std::cout<<arr1[i]<<' ';
+	std::cout<<'\n';
+	try
+	{
+		arr1[10] = 10;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout<<e.what()<<'\n';
+	}
 
-    for (int i = 0; i < n; i++)
-    {
-        integer[i] = i + 1;
-        dd[i] = i + 1.3;
-        character[i] = static_cast<char>(i + 65);
-        string[i] = "hello";
-    }
+	Array<char>	arr2(0);
+	try
+	{
+		std::cout<<arr2[0];
+	}
+	catch(const std::exception& e)
+	{
+		std::cout<<e.what()<<'\n';
+	}
 
-    for (int i = 0; i < integer.size(); i++)
-        std::cout << "integer[" << i << "]: " << integer[i] << std::endl;
-    std::cout << "=======================" << std::endl;
-    for (int i = 0; i < dd.size(); i++)
-        std::cout << "double[" << i << "]: " << dd[i] << std::endl;
-    std::cout << "=======================" << std::endl;
-    for (int i = 0; i < character.size(); i++)
-        std::cout << "character[" << i << "]: " << character[i] << std::endl;
-     std::cout << "=======================" << std::endl;
-    for (int i = 0; i < string.size(); i++)
-        std::cout << "string[" << i << "]: " << string[i] << std::endl;
-
-    std::cout << "======invalid inx======" << std::endl;
-    try
-    {
-        std::cout << string[n] << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    if (n > 0)
-    {
-        std::cout << "====change content====" << std::endl;
-        std::cout << "now string[0] is \"bonjour\"" << std::endl;
-        string[0] = "bonjour";
-        for (int i = 0; i < string.size(); i++)
-            std::cout << "string[" << i << "]: " << string[i] << std::endl;
-    }
+	Array<double> const arr3(3);  // const 객체에도 인덱스 접근 가능
+	for(int i=0; i<3 ; i++)
+		std::cout<<arr3[i]<<' ';
+	std::cout<<'\n';
 }

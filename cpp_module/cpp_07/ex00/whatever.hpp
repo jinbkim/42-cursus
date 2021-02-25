@@ -1,22 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yechoi <yechoi@student.42seoul.kr>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 21:57:55 by yechoi            #+#    #+#             */
-/*   Updated: 2020/11/26 21:57:55 by yechoi           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef WHATEVER_HPP
 # define WHATEVER_HPP
 
 #include <string>
 #include <iostream>
-#include "Awesome.hpp"
 
+// 템플릿 : 어떤자료형이 들어와도 다됨
 template <typename T>
 void    swap(T& A, T &B)
 {

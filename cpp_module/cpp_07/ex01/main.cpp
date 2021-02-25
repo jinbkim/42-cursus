@@ -1,31 +1,21 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yechoi <yechoi@student.42seoul.kr>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 22:56:05 by yechoi            #+#    #+#             */
-/*   Updated: 2020/11/26 22:56:05 by yechoi           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// 이문제도 템플릿을 사용해보는 문제
+// 어떤 배열 or 어떤 함수가 들어와도 잘작동함
 
 #include "iter.hpp"
 
 int main(void)
 {
-    char arr1[3] = {'a', 'b', 'c'};
-    iter(arr1, 3, func);
 
-    int arr2[3] = {2, 4, 6};
+    int arr1[2] = {1, 2};
+    iter(arr1, 2, func);
+
+    std::string arr2[3] = {"jinbkim", "hjung", "seobaek"};
     iter(arr2, 3, func);
 
-    std::string arr3[3] = {"yeji", "jihyun", "zuno"};
-    iter(arr3, 3, func);
+    // int tab[] = { 0, 1, 2, 3, 4 };
+    // iter(tab, 5, print);
 
-    int tab[] = { 0, 1, 2, 3, 4 };
-    Awesome tab2[5];
-    iter(tab, 5, print);
-    iter(tab2, 5, print);
+	// Awesome tab2[5];
+    // iter(tab2, 5, print);
     return 0;
 }

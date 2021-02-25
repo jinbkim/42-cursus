@@ -41,3 +41,5 @@
 - const_cast
 - reinterpret_cast
 ### cpp07
+- template
+### cpp08

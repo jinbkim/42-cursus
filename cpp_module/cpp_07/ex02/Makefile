@@ -1,39 +1,23 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: yechoi <yechoi@student.42seoul.kr>         +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/11/27 10:44:11 by yechoi            #+#    #+#              #
-#    Updated: 2020/11/27 13:16:42 by yechoi           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+SRC		= $(wildcard *.cpp)
+OBJ		= $(SRC:.cpp=.o)
 
-SRCS		=	main.cpp
-
-OBJS		= 	$(SRCS:.cpp=.o)
-
-CC			=	clang++
-
-FLAG		= 	-Wall -Wextra -Werror
-
-INCLUDES	= 	-I./
-
-NAME		=	array
+NAME	= array
+RM		= rm -rf
+CC		= clang++
+FLAGS	= -Wall -Wextra -Werror
 
 
-all			: $(NAME)
 
-$(NAME)		: $(OBJS)
-		$(CC) $(FLAG) $(OBJS) -o $(NAME) $(INCLUDES)
+all 	: $(NAME)
 
-clean		:
-		rm -rf $(OBJS)
+clean	:
+		$(RM) $(OBJ)
 
-fclean		: clean
-		rm -rf $(NAME)
+fclean	: clean
+		$(RM) $(NAME)
 
-re			: fclean all
+re		: fclean all
 
-.PHONY 		: all clean fclean re
+$(NAME) :
+	$(CC) $(FLAGS) -c $(SRC)
+	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
