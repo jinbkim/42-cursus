@@ -6,7 +6,7 @@ Allowed functions: fopen, fread, fscanf, fclose, write, malloc, calloc, realloc,
 Write a program that will read an "operation file" and print the result in the terminal
 
 Your program must take one argument, it will be the path to the "operation file"
-If 0 or more than 1 argument is given to your program write "Error: argument" followed by a \n in STDOUT
+If 0 or more than 1 argument is given to your program write C followed by a \n in STDOUT
 
 $> ./micro_paint | cat -e
 Error: argument$

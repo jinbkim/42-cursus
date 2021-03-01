@@ -86,7 +86,7 @@ int		main(int argc, char **argv)
 	if (!(file = fopen(argv[1], "r")) ||  // 읽기모드로 파일오픈
 		// 출력될 직사각형의 너비, 높이, 기본으로 채워지는 문자 읽기
 		(fscanf(file, "%d %d %c\n", &zone_w, &zone_h, &back_c) != 3) ||
-		(zone_w<0 || 300<zone_w || zone_h<0 || 300<zone_h))
+		(zone_w<=0 || 300<zone_w || zone_h<=0 || 300<zone_h))
 		// 파일 오픈에 실패하거나,
 		// 너비,높이,기본으로 채워지는 문자 총3개를 읽지 못하거나,
 		// 출력될 직사각형의 범위가 잘못 되었다면
