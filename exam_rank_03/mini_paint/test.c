@@ -66,7 +66,7 @@ int		main(int argc, char **argv)
 	memset(zone, back_c, sizeof(zone));
 	while (0 < (ret = fscanf(file, "%c %f %f %f %c\n", &mode, &center_x, &center_y, &r, &c)))
 	{
-		if ((mode!='c' && mode!='C') || r<0 || ret!=5)
+		if ((mode!='c' && mode!='C') || r<=0 || ret!=5)
 			return (put_error(ERR2));
 		draw_circle();
 	}
