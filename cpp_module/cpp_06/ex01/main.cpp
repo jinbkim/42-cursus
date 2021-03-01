@@ -54,7 +54,6 @@ Data    *deserialize(void *raw)
     Data *dd = new Data;
 
 	// reinterpret_cast<char*>(raw) 해도됨
-    // dd->s1 = static_cast<char*>(raw);  // raw 가리키기
     dd->s1 = static_cast<char*>(raw);  // raw 가리키기
 	// 8byte만큼 이동하기위해 먼저 static_cast<char*>(raw)
 	// dd->n = *static_cast<int*>(static_cast<char*>(raw) + 24); // 에러

@@ -69,7 +69,7 @@ void    identify_from_reference(Base &p)
 
 int     main(void)
 {
-    srand(time(0));
+    srand(clock());
 
     Base* p;
     p = generate();  // 랜덤으로 객체 생성
