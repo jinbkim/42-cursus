@@ -4,7 +4,7 @@ OBJ		= $(SRC:.cpp=.o)
 NAME	= whatever
 RM		= rm -rf
 CC		= clang++
-FLAGS	= -Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 
 

@@ -33,6 +33,7 @@ void    func(T const &name)
 }
 
 template <typename T>
+// 인자 : 배열, 배열의 크기, 함수
 void    iter(T *array, int len, void (*f)(T const &ref))
 {
     for (int i = 0; i < len; i++)
