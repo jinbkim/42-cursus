@@ -42,9 +42,12 @@ int main()
 
 
 
-	// Span sp2 = Span(10001);
-    // for (int i = 1; i < 10002; i++)
-    //     sp2.addNumber(i*3);
-    // std::cout << sp2.shortestSpan() << std::endl;
-    // std::cout << sp2.longestSpan() << std::endl;  
+	std::vector<int>	temp;
+	Span sp2(10000);
+
+	for(int i=0; i<10000; i++)
+		temp.push_back(i*3);
+	sp2.addNumber(temp.begin(), temp.end());
+    std::cout<<sp2.shortestSpan()<<'\n';
+    std::cout<<sp2.longestSpan()<<'\n';  
 }

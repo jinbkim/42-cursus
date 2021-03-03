@@ -45,7 +45,7 @@ void Span::addNumber(InputIterator begin, InputIterator end)
 {
 	if (this->_v.size() + std::distance(begin, end) > this->_n)  // 벡터 사이즈가 꽉차면
         throw Span::NoSpaceException();  // 자리가 없다고 말해줌
-	this->numbers.insert(begin, end);
+	this->_v.insert(begin, end);
 }
 
 
