@@ -6,12 +6,15 @@
 
 // stl algorithm 사용하라함 : iterator, vector, min_element, max_element, adjacent_difference, sort
 
+// void		addNumber(int value);
+// void		addNumber(it begin, it end);
+// iterator(범위)를 이용해 한번호출로 많은 원소를 추가하는 addNumber함수 오버로딩을 해줌
+
 #include "span.hpp"
 
 int main()
 {
 	Span	sp(5);
-	int		num;
 
 	sp.addNumber(3);
 	// span을 구하려면 원소 2개가 필요한데 1개밖에없어서 예외처리
@@ -47,7 +50,7 @@ int main()
 
 	for(int i=0; i<10000; i++)
 		temp.push_back(i*3);
-	sp2.addNumber(temp.begin(), temp.end());
+	sp2.addNumber(temp.begin(), temp.end());  // addNumber 한번호출로 원소 10000개 다넣음
     std::cout<<sp2.shortestSpan()<<'\n';
     std::cout<<sp2.longestSpan()<<'\n';  
 }

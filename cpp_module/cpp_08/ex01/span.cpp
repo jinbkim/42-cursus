@@ -40,12 +40,12 @@ void                Span::addNumber(int value)
     _v.push_back(value);
 }
 
-template<typename InputIterator>
-void Span::addNumber(InputIterator begin, InputIterator end)
+// template<typename InputIterator>
+void				 Span::addNumber(it begin, it end)
 {
 	if (this->_v.size() + std::distance(begin, end) > this->_n)  // 벡터 사이즈가 꽉차면
         throw Span::NoSpaceException();  // 자리가 없다고 말해줌
-	this->_v.insert(begin, end);
+	this->_v.insert(_v.end(), begin, end);  // _v에 begin부터 end까지의 원소를 다넣음
 }
 
 

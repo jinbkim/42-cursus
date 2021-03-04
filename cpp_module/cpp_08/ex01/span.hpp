@@ -6,6 +6,9 @@
 #include <vector>
 #include <algorithm>
 #include <numeric>
+#include <iterator>
+
+typedef std::vector<int>::iterator	it;
 
 class Span
 {
@@ -22,8 +25,7 @@ public:
 
 	std::vector<int>    getVector();
 	void                addNumber(int value);
-	template<typename InputIterator>
-	void addNumber(InputIterator begin, InputIterator end);
+	void				addNumber(it begin, it end);
 	unsigned int        longestSpan();
 	unsigned int        shortestSpan();
 
