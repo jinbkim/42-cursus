@@ -12,11 +12,11 @@ int     main(void)
 	std::vector<char>	vec2(5);  // 크키가 5인 char형 벡터 생성
 
 	// vec1에 1, 2, 3, 4, 5 저장
-	for(int i=0; i<vec1.size(); i++)
+	for(unsigned int i=0; i<vec1.size(); i++)
 		vec1[i] = i+1;
 
 	// vec2에 a, b, c, d, e 저장
-	for(int i=0; i<vec2.size(); i++)
+	for(unsigned int i=0; i<vec2.size(); i++)
 		vec2[i] = 'a'+i;
 	
 	// 5있음
