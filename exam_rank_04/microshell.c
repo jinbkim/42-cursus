@@ -1,15 +1,15 @@
 #include <unistd.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
-#define	ERR1	"error: cd: bad arguments\n"
+#define ERR1	"error: cd: bad arguments\n"
 #define ERR2	"error: cd: cannot change directory to "
-#define	ERR3	"error: fatal\n"
+#define ERR3	"error: fatal\n"
 #define ERR4	"error: cannot execute "
 
 int		is_pipe(char **argv)
 {
-	int i=-1;
+	int	i=-1;
 
 	while (argv[++i])
 	{
@@ -44,16 +44,16 @@ int		put_error(char *s)
 
 int		ft_argvlen(char **argv)
 {
-	int i=0;
+	int	i=0;
 
-	while(argv[i])
+	while (argv[i])
 		i++;
 	return (i);
 }
 
 void	ft_cd(char **argv)
 {
-	int	i = ft_argvlen(argv);
+	int	i=ft_argvlen(argv);
 
 	if (i != 2)
 		put_error(ERR1);
