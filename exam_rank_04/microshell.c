@@ -39,7 +39,7 @@ int		ft_strlen(char *s)
 int		put_error(char *s)
 {
 	write(2, s, ft_strlen(s));
-	return (0);
+	return (1);
 }
 
 int		ft_argvlen(char **argv)
@@ -74,34 +74,39 @@ void	cmd(int argc, char **argv, char **envp, int prev, int *fd_prev)
 	if (argc <= 0)
 		return ;
 	next = is_pipe(argv);
-	if (next && pipe(fd_next)<0)
-		exit(put_error(ERR3));
-	if (!strncmp(argv[0], "cd", 3))
-		ft_cd(argv);
-	else if ((pid = fork()) < 0)
-		exit(put_error(ERR3));
-	else if (!pid)
+	if (argv[0])
 	{
-		if (prev && dup2(fd_prev[0], 0)<0)
+		if (next && pipe(fd_next)<0)
 			exit(put_error(ERR3));
-		if (next && dup2(fd_next[1], 1)<0)
+		if (!strncmp(argv[0], "cd", 3))
+			ft_cd(argv);
+		else if ((pid = fork()) < 0)
 			exit(put_error(ERR3));
-		if (execve(argv[0], argv, envp) < 0)
+		else if (!pid)
 		{
-			put_error(ERR4);
-			put_error(argv[0]);
-			put_error("\n");
-			exit(0);
+			if (prev && dup2(fd_prev[0], 0)<0)
+				exit(2);
+			if (next && dup2(fd_next[1], 1)<0)
+				exit(2);
+			if (execve(argv[0], argv, envp) < 0)
+			{
+				put_error(ERR4);
+				put_error(argv[0]);
+				put_error("\n");
+				exit(1);
+			}
 		}
-	}
-	else
-	{
-		if (waitpid(pid, &status, 0) < 0)
-			exit(put_error(ERR3));
-		if (prev)
-			close(fd_prev[0]);
-		if (next)
-			close(fd_next[1]);
+		else
+		{
+			if (waitpid(pid, &status, 0) < 0)
+				exit(put_error(ERR3));
+			if (status == 512)
+				exit(put_error(ERR3));
+			if (prev)
+				close(fd_prev[0]);
+			if (next)
+				close(fd_next[1]);
+		}
 	}
 	i = ft_argvlen(argv);
 	cmd(argc-i-1, argv+i+1, envp, next, fd_next);
@@ -111,6 +116,8 @@ int		main(int argc, char **argv, char **envp)
 {
 	int	fd_prev[2];
 
+	fd_prev[0] = 0;
+	fd_prev[1] = 1;
 	cmd(argc-1, argv+1, envp, 0, fd_prev);
 	return (0);
 }
