@@ -44,6 +44,7 @@ int		main(int argc, char **argv)
 			if (pos == std::string::npos)  // line에 s1 문자열이 없으면
 				break ;
 			line.replace(pos, s1.length(), s2);  // s1의 문자열을 s2로 변경
+			pos += s2.length // 변경한 길이만큼 pos 증가
 		}
 		ofs<<line;  // 변경된 문자열 출력할 파일에 넣기
 		if (!ifs.eof())  // 읽을 파일을 다 안읽었다면
