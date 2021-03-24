@@ -16,8 +16,6 @@
 int		msg(t_philo *philo, int msg, unsigned long cur)
 {
 	sem_wait(g_table.m_msg);  // 세마포어로 락을 해줌으로써 메시지가 꼬이지 않게함
-	if (g_table.dead)  // 이미 죽은 철학자가 있으면
-		return (sem_post(g_table.m_msg) + 100);  // 아무말도안하고 탈출. 1을 반환함으로써 philo_act의 반복문을 벗어나게함 
 	printf("%lu %d", cur - g_table.base_time, philo->nbr);
 	if (msg == TAKEN_FORK)
 		printf(" has taken a fork\n");
@@ -72,10 +70,7 @@ int		eat(t_philo *philo)
 	sem_post(g_table.enter);
 	philo->eat++;  // 철학자가 밥먹은 횟수 증가
 	if (philo->eat == g_table.num_eat)
-	{
-		g_table.eat++;  // 다먹은 철학자의 수 1증가
 		return (1);  // 1을 리턴함으로써 philo_act함수의 반목문을 탈출
-	}
 	return (0);
 }
 

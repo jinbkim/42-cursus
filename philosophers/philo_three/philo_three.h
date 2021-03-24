@@ -37,8 +37,6 @@ typedef struct		s_table
 	int				num_eat;
 
 	unsigned long	base_time;  // 기준이 되는시간
-	int				eat;  // 다먹은 철학자의 수
-	int				dead;  // 철학자가 한명이라도 죽으면 1이되는 변수
 
 	sem_t			*enter;  // 동시에 밥을 먹을수 있는 세마포어수 (철학자수/2)
 	sem_t			*m_msg;  // 메시지를 출력할때 꼬이지말라고 만드는 세마포어 

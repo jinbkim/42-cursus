@@ -37,8 +37,6 @@ void	init_table(void)
 		g_philos[i].nbr = i + 1;  // 철학자 번호
 		g_philos[i].eat = 0;
 	}
-	g_table.eat = 0;
-	g_table.dead = 0;
 	g_table.base_time = get_time();  // 0초가 되는시간 (기준이 되는 시간)
 	g_table.enter = sem_open("/enter", O_CREAT | O_EXCL, 0777,
 			g_table.num_philo / 2);  // 철학자수/2 만큼 세마포어값 설정
