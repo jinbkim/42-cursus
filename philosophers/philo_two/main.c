@@ -15,15 +15,31 @@
 // 문자열로 들어오는 인자를 정수형으로 파싱
 int		parse(char **argv)
 {
-	if ((g_table.num_philo = ft_atoi(argv[1])) <= 1 ||
-		(g_table.time_to_die = ft_atoi(argv[2])) <= 0 ||
-		(g_table.time_to_eat = ft_atoi(argv[3])) <= 0 ||
-		(g_table.time_to_sleep = ft_atoi(argv[4])) <= 0)
+	// 인자가 음수이면 에러처리
+	if (ft_atoi(argv[1]) <= 1 ||
+		ft_atoi(argv[2]) <= 0 ||
+		ft_atoi(argv[3]) <= 0 ||
+		ft_atoi(argv[4]) <= 0 ||
+		(argv[5] && ft_atoi(argv[5]) <= 0))
 		return (1);
-	if (argv[5] && (g_table.num_eat = ft_atoi(argv[5])) <= 0)
-		return (1);
-	else if (!argv[5])
+	g_table.num_philo = ft_atoi(argv[1]);
+	g_table.time_to_die = ft_atoi(argv[2]);
+	g_table.time_to_eat = ft_atoi(argv[3]);
+	g_table.time_to_sleep = ft_atoi(argv[4]);
+	if (argv[5])
+		g_table.num_eat = ft_atoi(argv[5]);
+	else
 		g_table.num_eat = -1;
+	// 변수가 unsigned long 이라서 조건문에서 음수를 잡아주지 못했음
+	// if ((g_table.num_philo = ft_atoi(argv[1])) <= 1 ||
+	// 	(g_table.time_to_die = ft_atoi(argv[2])) <= 0 ||
+	// 	(g_table.time_to_eat = ft_atoi(argv[3])) <= 0 ||
+	// 	(g_table.time_to_sleep = ft_atoi(argv[4])) <= 0)
+	// 	return (1);
+	// if (argv[5] && (g_table.num_eat = ft_atoi(argv[5])) <= 0)
+	// 	return (1);
+	// else if (!argv[5])
+	// 	g_table.num_eat = -1;
 	return (0);
 }
 
