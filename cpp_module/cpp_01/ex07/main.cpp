@@ -38,12 +38,14 @@ int		main(int argc, char **argv)
 	}
 	while (getline(ifs, line))  // 한줄씩 파일 읽기
 	{
+		pos = 0;
 		while (true)
 		{
-			pos = line.find(s1);  // 한줄읽은 line에 문자열이 s1 있는 위치찾기
+			pos = line.find(s1, pos);  // 한줄읽은 line에 문자열이 s1 있는 위치찾기
 			if (pos == std::string::npos)  // line에 s1 문자열이 없으면
 				break ;
 			line.replace(pos, s1.length(), s2);  // s1의 문자열을 s2로 변경
+			pos += s2.length();
 		}
 		ofs<<line;  // 변경된 문자열 출력할 파일에 넣기
 		if (!ifs.eof())  // 읽을 파일을 다 안읽었다면
