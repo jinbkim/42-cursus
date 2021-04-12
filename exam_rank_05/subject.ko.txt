@@ -1,0 +1,81 @@
+과제 이름	: cpp_module_00
+예상 파일 	: Warlock.cpp Warlock.hpp
+--------------------------------------------------------------------------------
+
+Warlock class를 만들자. 그건 Coplien's form 이어야 해 (기본 생성자, 복사 생성자, 대입 연산자 오버로딩, 소멸자 한개씩)
+
+Warlock class의 private attributes :
+* name (string)
+* title (string)
+
+name과 title은 private 이므로, getters 만들어야함 :
+* getName, constant string을 reference로 반환
+* getTitle, constant string을 reference로 반환
+
+두 함수들은 둘다 constant Warlock에서 호출이 가능해야 함
+
+setter 만들기:
+* setTitle, 인자로 constant string을 reference로 받고 void로 반환
+
+Warlock은 Coplien's form 이어야하고
+name과 title, 이 순서대로 생성자를 가져야함.
+Warlock은 name과 title 없이 
+기본생성자, 복사생성자, 대입연산자로 객체를 만들수 없음.
+
+예시 :
+
+Warlock bob;                            //Does not compile
+Warlock bob("Bob", "the magnificent");  //Compiles
+Warlock jim("Jim", "the nauseating");   //Compiles
+bob = jim;                              //Does not compile
+Warlock jack(jim);                      //Does not compile
+
+Warlock이 만들어질때 하는 말 :
+
+<NAME> : This looks like another boring day.
+
+<NAME>, <TITLE>, 등은 같은 자리 표시자를 나타냄
+출력에서 <와>가 없이 해당하는 값으로 대체됨
+
+Warlock이 소멸될때 하는 말 :
+
+<NAME>: My job here is done!
+
+Warlock은 또한 자신을 소개할 수 있어야 함.
+
+
+다음과 같은 함수를 만들기:
+* void introduce() const;
+
+다음을 표시해야함:
+
+<NAME>: I am <NAME>, <TITLE> !
+
+test main function과 관련된 출력의 예시:
+
+int main()
+{
+  Warlock const richard("Richard", "Mistress of Magma");
+  richard.introduce();
+  std::cout << richard.getName() << " - " << richard.getTitle() << std::endl;
+
+  Warlock* jack = new Warlock("Jack", "the Long");
+  jack->introduce();
+  jack->setTitle("the Mighty");
+  jack->introduce();
+
+  delete jack;
+
+  return (0);
+}
+
+~$ ./a.out | cat -e
+Richard: This looks like another boring day.$
+Richard: I am Richard, Mistress of Magma!$
+Richard - Mistress of Magma$
+Jack: This looks like another boring day.$
+Jack: I am Jack, the Long!$
+Jack: I am Jack, the Mighty!$
+Jack: My job here is done!$
+Richard: My job here is done!$
+~$
