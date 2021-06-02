@@ -1,12 +1,12 @@
 #ifndef STACK_HPP
 # define STACK_HPP
 
-# include "List.hpp"
+# include "list.hpp"
 
 namespace ft
 {
-	template <class T, class Container = ft::List<T> >
-	class Stack
+	template <class T, class Container = ft::list<T> >
+	class stack
 	{
 	public:
 		typedef T value_type;
@@ -17,13 +17,13 @@ namespace ft
 		container_type c;
 
 	public:
-		explicit Stack(const container_type &ctnr = container_type()) : c(ctnr){};
-		Stack(const Stack &other)
+		explicit stack(const container_type &ctnr = container_type()) : c(ctnr){};
+		stack(const stack &other)
 		{
 			*this = other;
 		};
-		~Stack(void){};
-		Stack &operator=(const Stack &other)
+		~stack(void){};
+		stack &operator=(const stack &other)
 		{
 			this->c = other.c;
 			return (*this);
@@ -52,27 +52,27 @@ namespace ft
 		{
 			c.pop_back();
 		};
-		bool operator==(const Stack<T, Container> &s)
+		bool operator==(const stack<T, Container> &s)
 		{
 			return (this->c == s.c);
 		}
-		bool operator!=(const Stack<T, Container> &s)
+		bool operator!=(const stack<T, Container> &s)
 		{
 			return (this->c != s.c);
 		};
-		bool operator>(const Stack<T, Container> &s)
+		bool operator>(const stack<T, Container> &s)
 		{
 			return (this->c > s.c);
 		};
-		bool operator<(const Stack<T, Container> &s)
+		bool operator<(const stack<T, Container> &s)
 		{
 			return (this->c < s.c);
 		};
-		bool operator>=(const Stack<T, Container> &s)
+		bool operator>=(const stack<T, Container> &s)
 		{
 			return (this->c >= s.c);
 		};
-		bool operator<=(const Stack<T, Container> &s)
+		bool operator<=(const stack<T, Container> &s)
 		{
 			return (this->c <= s.c);
 		};

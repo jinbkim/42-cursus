@@ -9,11 +9,11 @@
 # include <stack>
 # include <queue>
 
-# include "Vector.hpp"
-# include "List.hpp"
-# include "Map.hpp"
-# include "Queue.hpp"
-# include "Stack.hpp"
+# include "vector.hpp"
+# include "list.hpp"
+# include "map.hpp"
+# include "queue.hpp"
+# include "stack.hpp"
 
 # define RESET "\e[0m"
 # define RED "\e[91m"
@@ -69,7 +69,7 @@ inline void check(std::string name, bool good)
 };
 
 template <typename T>
-bool operator==(ft::Vector<T> &a, std::vector<T> &b)
+bool operator==(ft::vector<T> &a, std::vector<T> &b)
 {
 	if (a.size() != b.size())
 		return (false);
@@ -82,13 +82,13 @@ bool operator==(ft::Vector<T> &a, std::vector<T> &b)
 };
 
 template <typename T>
-bool operator==(ft::List<T> &a, std::list<T> &b)
+bool operator==(ft::list<T> &a, std::list<T> &b)
 {
 	if (a.size() != b.size())
 		return (false);
 	if (a.empty() != b.empty())
 		return (false);
-	typename ft::List<T>::iterator it = a.begin();
+	typename ft::list<T>::iterator it = a.begin();
 	typename std::list<T>::iterator it2 = b.begin();
 	while (it != a.end())
 	{
@@ -101,13 +101,13 @@ bool operator==(ft::List<T> &a, std::list<T> &b)
 };
 
 template <typename T, typename S>
-bool operator==(ft::Map<T, S> &a, std::map<T, S> &b)
+bool operator==(ft::map<T, S> &a, std::map<T, S> &b)
 {
 	if (a.size() != b.size())
 		return (false);
 	if (a.empty() != b.empty())
 		return (false);
-	typename ft::Map<T, S>::iterator it = a.begin();
+	typename ft::map<T, S>::iterator it = a.begin();
 	typename std::map<T, S>::iterator it2 = b.begin();
 	while (it != a.end())
 	{

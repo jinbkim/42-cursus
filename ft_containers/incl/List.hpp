@@ -1,12 +1,12 @@
 #ifndef LIST_HPP
 # define LIST_HPP
 
-# include "Utils.hpp"
+# include "utils.hpp"
 
 namespace ft
 {
 	template <class T>
-	class ListIterator
+	class listIterator
 	{
 	public:
 		typedef T value_type;
@@ -17,65 +17,65 @@ namespace ft
 		pointer _ptr;
 		
 	public:
-		ListIterator(void){};
-		ListIterator(const ListIterator &other)
+		listIterator(void){};
+		listIterator(const listIterator &other)
 		{
 			*this = other;
 		};
-		ListIterator(pointer ptr) : _ptr(ptr){};
-		~ListIterator(void){};
+		listIterator(pointer ptr) : _ptr(ptr){};
+		~listIterator(void){};
 		pointer node(void) const
 		{
 			return (_ptr);
 		};
-		ListIterator &operator=(const ListIterator &other)
+		listIterator &operator=(const listIterator &other)
 		{
 			_ptr = other._ptr;
 			return (*this);
 		};
-		ListIterator &operator++(void)
+		listIterator &operator++(void)
 		{
 			_ptr = _ptr->next;
 			return (*this);
 		};
-		ListIterator &operator--(void)
+		listIterator &operator--(void)
 		{
 			_ptr = _ptr->prev;
 			return (*this);
 		};
-		ListIterator operator++(int)
+		listIterator operator++(int)
 		{
-			ListIterator tmp(*this);
+			listIterator tmp(*this);
 			operator++();
 			return (tmp);
 		};
-		ListIterator operator--(int)
+		listIterator operator--(int)
 		{
-			ListIterator tmp(*this);
+			listIterator tmp(*this);
 			operator--();
 			return (tmp);
 		};
-		bool operator==(const ListIterator &other) const
+		bool operator==(const listIterator &other) const
 		{
 			return (_ptr == other._ptr);
 		};
-		bool operator!=(const ListIterator &other) const
+		bool operator!=(const listIterator &other) const
 		{
 			return (_ptr != other._ptr);
 		};
-		bool operator>(const ListIterator &other) const
+		bool operator>(const listIterator &other) const
 		{
 			return (_ptr > other._ptr);
 		};
-		bool operator>=(const ListIterator &other) const
+		bool operator>=(const listIterator &other) const
 		{
 			return (_ptr >= other._ptr);
 		};
-		bool operator<(const ListIterator &other) const
+		bool operator<(const listIterator &other) const
 		{
 			return (_ptr < other._ptr);
 		};
-		bool operator<=(const ListIterator &other) const
+		bool operator<=(const listIterator &other) const
 		{
 			return (_ptr <= other._ptr);
 		};
@@ -87,19 +87,19 @@ namespace ft
 		{
 			return (_ptr->data);
 		};
-		ListIterator operator+(int n) const
+		listIterator operator+(int n) const
 		{
-			ListIterator tmp(*this);
+			listIterator tmp(*this);
 			tmp += n;
 			return (tmp);
 		};
-		ListIterator operator-(int n) const
+		listIterator operator-(int n) const
 		{
-			ListIterator tmp(*this);
+			listIterator tmp(*this);
 			tmp -= n;
 			return (tmp);
 		};
-		ListIterator &operator+=(int n)
+		listIterator &operator+=(int n)
 		{
 			while (n < 0)
 			{
@@ -113,7 +113,7 @@ namespace ft
 			}
 			return (*this);
 		};
-		ListIterator &operator-=(int n)
+		listIterator &operator-=(int n)
 		{
 			while (n > 0)
 			{
@@ -132,7 +132,7 @@ namespace ft
 
 
 	template <class T>
-	class ReverseListIterator
+	class ReverselistIterator
 	{
 	public:
 		typedef T value_type;
@@ -143,59 +143,59 @@ namespace ft
 		pointer _ptr;
 
 	public:
-		ReverseListIterator(void){};
-		ReverseListIterator(const ReverseListIterator &other)
+		ReverselistIterator(void){};
+		ReverselistIterator(const ReverselistIterator &other)
 		{
 			*this = other;
 		};
-		ReverseListIterator(pointer ptr)
+		ReverselistIterator(pointer ptr)
 		{
 			this->_ptr = ptr;
 		};
-		~ReverseListIterator(void){};
-		ReverseListIterator &operator++(void)
+		~ReverselistIterator(void){};
+		ReverselistIterator &operator++(void)
 		{
 			this->_ptr = this->_ptr->prev;
 			return (*this);
 		};
-		ReverseListIterator &operator--(void)
+		ReverselistIterator &operator--(void)
 		{
 			this->_ptr = this->_ptr->next;
 			return (*this);
 		};
-		ReverseListIterator operator++(int)
+		ReverselistIterator operator++(int)
 		{
-			ReverseListIterator tmp(*this);
+			ReverselistIterator tmp(*this);
 			operator++();
 			return (tmp);
 		};
-		ReverseListIterator operator--(int)
+		ReverselistIterator operator--(int)
 		{
-			ReverseListIterator tmp(*this);
+			ReverselistIterator tmp(*this);
 			operator--();
 			return (tmp);
 		};
-		bool operator==(const ReverseListIterator &other) const
+		bool operator==(const ReverselistIterator &other) const
 		{
 			return (_ptr == other._ptr);
 		};
-		bool operator!=(const ReverseListIterator &other) const
+		bool operator!=(const ReverselistIterator &other) const
 		{
 			return (_ptr != other._ptr);
 		};
-		bool operator>(const ReverseListIterator &other) const
+		bool operator>(const ReverselistIterator &other) const
 		{
 			return (_ptr > other._ptr);
 		};
-		bool operator>=(const ReverseListIterator &other) const
+		bool operator>=(const ReverselistIterator &other) const
 		{
 			return (_ptr >= other._ptr);
 		};
-		bool operator<(const ReverseListIterator &other) const
+		bool operator<(const ReverselistIterator &other) const
 		{
 			return (_ptr < other._ptr);
 		};
-		bool operator<=(const ReverseListIterator &other) const
+		bool operator<=(const ReverselistIterator &other) const
 		{
 			return (_ptr <= other._ptr);
 		};
@@ -207,19 +207,19 @@ namespace ft
 		{
 			return (_ptr->data);
 		};
-		ReverseListIterator operator+(int n) const
+		ReverselistIterator operator+(int n) const
 		{
-			ReverseListIterator tmp(*this);
+			ReverselistIterator tmp(*this);
 			tmp += n;
 			return (tmp);
 		};
-		ReverseListIterator operator-(int n) const
+		ReverselistIterator operator-(int n) const
 		{
-			ReverseListIterator tmp(*this);
+			ReverselistIterator tmp(*this);
 			tmp -= n;
 			return (tmp);
 		};
-		ReverseListIterator &operator+=(int n)
+		ReverselistIterator &operator+=(int n)
 		{
 			while (n < 0)
 			{
@@ -233,7 +233,7 @@ namespace ft
 			}
 			return (*this);
 		};
-		ReverseListIterator &operator-=(int n)
+		ReverselistIterator &operator-=(int n)
 		{
 			while (n > 0)
 			{
@@ -252,7 +252,7 @@ namespace ft
 
 
 	template <class T, class Alloc = std::allocator<T> >
-	class List
+	class list
 	{
 	public:
 		typedef T value_type;
@@ -263,9 +263,9 @@ namespace ft
 		typedef const T *const_pointer;
 		typedef unsigned long size_type;
 		typedef Node<value_type> *node;
-		typedef ListIterator<value_type> iterator;
+		typedef listIterator<value_type> iterator;
 		typedef iterator const_iterator;
-		typedef ReverseListIterator<value_type> reverse_iterator;
+		typedef ReverselistIterator<value_type> reverse_iterator;
 		typedef reverse_iterator const_reverse_iterator;
 
 	private:
@@ -305,33 +305,34 @@ namespace ft
 		};
 
 	public:
-		explicit List(const allocator_type &alloc = allocator_type()) : _list_begin(0), _list_end(0), _allocator(alloc), _length(0)
+		explicit list(const allocator_type &alloc = allocator_type()) : _list_begin(0), _list_end(0), _allocator(alloc), _length(0)
 		{
 			_init_list();
 		};
-		explicit List(size_type n, const value_type &value = value_type(), const allocator_type &alloc = allocator_type()) : _list_begin(0), _list_end(0), _allocator(alloc), _length(0)
+		explicit list(size_type n, const value_type &value = value_type(), const allocator_type &alloc = allocator_type()) : _list_begin(0), _list_end(0), _allocator(alloc), _length(0)
 		{
 			_init_list();
 			assign(n, value);
 		};
 		template <class InputIterator>
-		List(InputIterator first, InputIterator last, const allocator_type &alloc = allocator_type()) : _list_begin(0), _list_end(0), _allocator(alloc), _length(0)
+		list(InputIterator first, InputIterator last, const allocator_type &alloc = allocator_type(), typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type tmp = 0) : _list_begin(0), _list_end(0), _allocator(alloc), _length(0)
 		{
+			(void)tmp;
 			_init_list();
 			assign(first, last);
 		};
-		List(const List &other) : _list_begin(0), _list_end(0), _allocator(other._allocator), _length(0)
+		list(const list &other) : _list_begin(0), _list_end(0), _allocator(other._allocator), _length(0)
 		{
 			_init_list();
 			*this = other;
 		};
-		~List(void)
+		~list(void)
 		{
 			clear();
 			delete _list_begin;
 			delete _list_end;
 		};
-		List &operator=(const List &other)
+		list &operator=(const list &other)
 		{
 			clear();
 			assign(other.begin(), other.end());
@@ -399,8 +400,9 @@ namespace ft
 			return (_list_end->prev->data);
 		};
 		template <class InputIterator>
-		void assign(InputIterator first, InputIterator last)
+		void assign(InputIterator first, InputIterator last, typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type tmp = 0)
 		{
+			(void)tmp;
 			clear();
 			while (first != last)
 				push_back(*(first++));
@@ -467,8 +469,9 @@ namespace ft
 				position = insert(position, value);
 		};
 		template <class InputIterator>
-		void insert(iterator position, InputIterator first, InputIterator last)
+		void insert(iterator position, InputIterator first, InputIterator last, typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type tmp = 0)
 		{
+			(void)tmp;
 			while (first != last)
 			{
 				position = insert(position, *(first++));
@@ -502,7 +505,7 @@ namespace ft
 				erase(first++);
 			return (first);
 		};
-		void swap(List &x)
+		void swap(list &x)
 		{
 			ft::swap(x._length, _length);
 			ft::swap(x._list_begin, _list_begin);
@@ -529,16 +532,16 @@ namespace ft
 			_length = 0;
 		};
 		// 인자로 들어온 리스트 x의 원소 -> 해당 리스트
-		void splice(iterator position, List &x)
+		void splice(iterator position, list &x)
 		{
 			splice(position, x, x.begin(), x.end());
 		};
-		void splice(iterator position, List &x, iterator i)
+		void splice(iterator position, list &x, iterator i)
 		{
 			insert(position, *i);
 			x.erase(i);
 		};
-		void splice(iterator position, List &x, iterator first, iterator last)
+		void splice(iterator position, list &x, iterator first, iterator last)
 		{
 			insert(position, first, last);
 			x.erase(first, last);
@@ -588,16 +591,16 @@ namespace ft
 			}
 		};
 		// merge sort
-		void merge(List &x)
+		void merge(list &x)
 		{
 			merge(x, _Smaller<value_type>());
 		};
 		template <class Compare>
-		void merge(List &x, Compare comp)
+		void merge(list &x, Compare comp)
 		{
 			if (&x == this)
 				return;
-			List tmp;
+			list tmp;
 			iterator it1 = begin();
 			iterator it2 = x.begin();
 			while (it1 != end() && it2 != x.end())
@@ -637,7 +640,7 @@ namespace ft
 		};
 		void reverse(void)
 		{
-			List<value_type> tmp;
+			list<value_type> tmp;
 			iterator it = begin();
 			while (it != end())
 				tmp.push_front(*(it++));
@@ -645,17 +648,17 @@ namespace ft
 		};
 	};
 	template <class T, class Alloc>
-	void swap(List<T, Alloc> &x, List<T, Alloc> &y)
+	void swap(list<T, Alloc> &x, list<T, Alloc> &y)
 	{
 		x.swap(y);
 	};
 	template <typename T>
-	bool operator==(List<T> const &lhs, List<T> const &rhs)
+	bool operator==(list<T> const &lhs, list<T> const &rhs)
 	{
 		if (lhs.size() != rhs.size())
 			return (false);
-		typename List<T>::const_iterator cur1 = lhs.begin();
-		typename List<T>::const_iterator cur2 = rhs.begin();
+		typename list<T>::const_iterator cur1 = lhs.begin();
+		typename list<T>::const_iterator cur2 = rhs.begin();
 		while (cur1 != lhs.end())
 		{
 			if (*(cur1++) != *(cur2++))
@@ -664,19 +667,19 @@ namespace ft
 		return (true);
 	};
 	template <typename T>
-	bool operator!=(List<T> const &lhs, List<T> const &rhs)
+	bool operator!=(list<T> const &lhs, list<T> const &rhs)
 	{
 		return (!(lhs == rhs));
 	};
 	template <typename T>
-	bool operator<(List<T> const &lhs, List<T> const &rhs)
+	bool operator<(list<T> const &lhs, list<T> const &rhs)
 	{
 		if (lhs.size() < rhs.size())
 			return (true);
 		if (lhs.size() > rhs.size())
 			return (false);
-		typename List<T>::const_iterator cur1 = lhs.begin();
-		typename List<T>::const_iterator cur2 = rhs.begin();
+		typename list<T>::const_iterator cur1 = lhs.begin();
+		typename list<T>::const_iterator cur2 = rhs.begin();
 		while (cur1 != lhs.end())
 		{
 			if (*cur1 != *cur2)
@@ -687,17 +690,17 @@ namespace ft
 		return (false);
 	};
 	template <typename T>
-	bool operator<=(List<T> const &lhs, List<T> const &rhs)
+	bool operator<=(list<T> const &lhs, list<T> const &rhs)
 	{
 		return (!(rhs < lhs));
 	};
 	template <typename T>
-	bool operator>(List<T> const &lhs, List<T> const &rhs)
+	bool operator>(list<T> const &lhs, list<T> const &rhs)
 	{
 		return (rhs < lhs);
 	};
 	template <typename T>
-	bool operator>=(List<T> const &lhs, List<T> const &rhs)
+	bool operator>=(list<T> const &lhs, list<T> const &rhs)
 	{
 		return (!(lhs < rhs));
 	};

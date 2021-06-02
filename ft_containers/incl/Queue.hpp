@@ -1,12 +1,12 @@
 #ifndef QUEUE_HPP
 # define QUEUE_HPP
 
-# include "List.hpp"
+# include "list.hpp"
 
 namespace ft
 {
-	template <class T, class Container = ft::List<T> >
-	class Queue
+	template <class T, class Container = ft::list<T> >
+	class queue
 	{
 	public:
 		typedef T value_type;
@@ -17,13 +17,13 @@ namespace ft
 		container_type c;
 
 	public:
-		explicit Queue(const container_type &ctnr = container_type()) : c(ctnr){};
-		Queue(const Queue &other)
+		explicit queue(const container_type &ctnr = container_type()) : c(ctnr){};
+		queue(const queue &other)
 		{
 			*this = other;
 		};
-		~Queue(void){};
-		Queue &operator=(const Queue &other)
+		~queue(void){};
+		queue &operator=(const queue &other)
 		{
 			this->c = other.c;
 			return (*this);
@@ -60,27 +60,27 @@ namespace ft
 		{
 			c.pop_front();
 		};
-		bool operator==(const Queue<T, Container> &q)
+		bool operator==(const queue<T, Container> &q)
 		{
 			return (this->c == q.c);
 		};
-		bool operator!=(const Queue<T, Container> &q)
+		bool operator!=(const queue<T, Container> &q)
 		{
 			return (this->c != q.c);
 		};
-		bool operator>(const Queue<T, Container> &q)
+		bool operator>(const queue<T, Container> &q)
 		{
 			return (this->c > q.c);
 		};
-		bool operator<(const Queue<T, Container> &q)
+		bool operator<(const queue<T, Container> &q)
 		{
 			return (this->c < q.c);
 		};
-		bool operator>=(const Queue<T, Container> &q)
+		bool operator>=(const queue<T, Container> &q)
 		{
 			return (this->c >= q.c);
 		};
-		bool operator<=(const Queue<T, Container> &q)
+		bool operator<=(const queue<T, Container> &q)
 		{
 			return (this->c <= q.c);
 		};

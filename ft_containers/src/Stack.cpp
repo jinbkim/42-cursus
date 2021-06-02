@@ -1,9 +1,9 @@
-#include "../incl/Tests.hpp"
+#include "../incl/tests.hpp"
 
 static void constructors(void)
 {
 	print_header("Constructor");
-	ft::Stack<int> s1;
+	ft::stack<int> s1;
 	std::stack<int> s2;
 	check("s1.size() == s2.size()", s1.size() == s2.size());
 	check("s1.empty() == s2.empty()", s1.empty() == s2.empty());
@@ -12,7 +12,7 @@ static void constructors(void)
 static void front_back(void)
 {
 	print_header("Front / Back / Push / Pop");
-	ft::Stack<int> s1;
+	ft::stack<int> s1;
 	std::stack<int> s2;
 	s1.push(0);
 	s1.push(1);
@@ -31,7 +31,7 @@ static void front_back(void)
 
 void test_stack(void)
 {
-	print_header("Stack", true);
+	print_header("stack", true);
 	
 	constructors();
 	front_back();

@@ -1,19 +1,19 @@
-#include "../incl/Tests.hpp"
+#include "../incl/tests.hpp"
 
 static void constructors(void)
 {
 	print_header("Constructors / Copy");
 	std::pair<int, int> a[] = {std::make_pair(0, 1), std::make_pair(1, 0), std::make_pair(2, 1)};
-	ft::Map<int, int> m1;
+	ft::map<int, int> m1;
 	std::map<int, int> m2;
 	check("(default) m1 == m2", (m1 == m2));
-	ft::Map<int, int> m3(a, a + 3);
+	ft::map<int, int> m3(a, a + 3);
 	std::map<int, int> m4(a, a + 3);
 	check("(range) m3 == m4", (m3 == m4));
-	ft::Map<int, int> m5(m3);
+	ft::map<int, int> m5(m3);
 	std::map<int, int> m6(m4);
 	check("(copy) m5 == m6", (m3 == m4));
-	ft::Map<int, int> m7;
+	ft::map<int, int> m7;
 	std::map<int, int> m8;
 	m7[0] = 1;
 	m7[1] = 2;
@@ -22,7 +22,7 @@ static void constructors(void)
 	m8[1] = 2;
 	m8[2] = 3;
 	check("(copy) m7 == m8", (m7 == m8));
-	ft::Map<int, int> m9;
+	ft::map<int, int> m9;
 	std::map<int, int> m10;
 	m9 = m7;
 	m10 = m8;
@@ -32,10 +32,10 @@ static void constructors(void)
 static void max_size(void)
 {
 	print_header("Size");
-	ft::Map<int, int> m1;
+	ft::map<int, int> m1;
 	std::map<int, int> m2;
 	check("m1.max_size() == m2.max_size()", m1.max_size(), m2.max_size());
-	ft::Map<std::string, int> m3;
+	ft::map<std::string, int> m3;
 	std::map<std::string, int> m4;
 	check("m3.max_size() == m4.max_size()", m3.max_size(), m4.max_size());
 }
@@ -43,7 +43,7 @@ static void max_size(void)
 static void access_operator(void)
 {
 	print_header("[] operator");
-	ft::Map<std::string, int> m1;
+	ft::map<std::string, int> m1;
 	std::map<std::string, int> m2;
 	m1["a"] = 1;
 	m1["b"] = 0;
@@ -68,7 +68,7 @@ static void insert(void)
 {
 	print_header("Insert");
 	std::pair<int, int> a[] = {std::make_pair(0, 1), std::make_pair(1, 0), std::make_pair(2, 1)};
-	ft::Map<int, int> m1(a, a + 3);
+	ft::map<int, int> m1(a, a + 3);
 	std::map<int, int> m2(a, a + 3);
 	m1.insert(m1.begin(), std::make_pair(5, 5));
 	m2.insert(m2.begin(), std::make_pair(5, 5));
@@ -83,7 +83,7 @@ static void insert(void)
 static void erase(void)
 {
 	print_header("Erase");
-	ft::Map<std::string, int> m1;
+	ft::map<std::string, int> m1;
 	std::map<std::string, int> m2;
 	m1["test"] = 1;
 	m1["a"] = 2;
@@ -112,9 +112,9 @@ static void erase(void)
 static void swap(void)
 {
 	print_header("Swap");
-	ft::Map<std::string, int> m1;
+	ft::map<std::string, int> m1;
 	std::map<std::string, int> m2;
-	ft::Map<std::string, int> m3;
+	ft::map<std::string, int> m3;
 	std::map<std::string, int> m4;
 	m1["a"] = 1;
 	m1["b"] = 2;
@@ -135,7 +135,7 @@ static void swap(void)
 static void clear(void)
 {
 	print_header("Clear");
-	ft::Map<std::string, int> m1;
+	ft::map<std::string, int> m1;
 	std::map<std::string, int> m2;
 	m1["a"] = 1;
 	m1["b"] = 42;
@@ -149,7 +149,7 @@ static void clear(void)
 static void find(void)
 {
 	print_header("Find");
-	ft::Map<std::string, int> m1;
+	ft::map<std::string, int> m1;
 	std::map<std::string, int> m2;
 	m1["a"] = 1;
 	m1["b"] = 42;
@@ -163,7 +163,7 @@ static void find(void)
 static void count(void)
 {
 	print_header("Count");
-	ft::Map<std::string, int> m1;
+	ft::map<std::string, int> m1;
 	std::map<std::string, int> m2;
 	m1["a"] = 1;
 	m1["b"] = 42;
@@ -179,7 +179,7 @@ static void count(void)
 static void bounds()
 {
 	print_header("Bounds");
-	ft::Map<std::string, int> m1;
+	ft::map<std::string, int> m1;
 	std::map<std::string, int> m2;
 	m1["a"] = 1;
 	m1["b"] = 42;
@@ -198,7 +198,7 @@ static void bounds()
 static void range(void)
 {
 	print_header("Equal range");
-	ft::Map<std::string, int> m1;
+	ft::map<std::string, int> m1;
 	std::map<std::string, int> m2;
 	m1["a"] = 1;
 	m1["b"] = 42;
@@ -208,7 +208,7 @@ static void range(void)
 	m2["b"] = 42;
 	m2["c"] = 42;
 	m2["d"] = 42;
-	std::pair<ft::Map<std::string, int>::iterator, ft::Map<std::string, int>::iterator> a = m1.equal_range("a");
+	std::pair<ft::map<std::string, int>::iterator, ft::map<std::string, int>::iterator> a = m1.equal_range("a");
 	std::pair<std::map<std::string, int>::iterator, std::map<std::string, int>::iterator> b = m2.equal_range("a");
 	check("a.first->first == b.first->first", a.first->first, b.first->first);
 	check("a.first->second == b.first->second", a.first->second, b.first->second);
@@ -219,7 +219,7 @@ static void range(void)
 static void operators_comp(void)
 {
 	print_header("Operators");
-	ft::Map<std::string, int> m1;
+	ft::map<std::string, int> m1;
 	std::map<std::string, int> m2;
 	m1["a"] = 1;
 	m1["b"] = 42;
@@ -229,7 +229,7 @@ static void operators_comp(void)
 	m2["b"] = 42;
 	m2["c"] = 42;
 	m2["d"] = 42;
-	ft::Map<std::string, int> m3;
+	ft::map<std::string, int> m3;
 	std::map<std::string, int> m4;
 	m3 = m1;
 	m4 = m2;
@@ -259,7 +259,7 @@ static void operators_comp(void)
 
 void test_map(void)
 {
-	print_header("Map", true);
+	print_header("map", true);
 
 	constructors();
 	max_size();
