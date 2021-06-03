@@ -626,6 +626,8 @@ namespace ft
 		{
 			return (_length);
 		};
+		// numeric_limits<size_type>::max()
+		// size_type 타입이 나타낼수 있는 최대값
 		size_type max_size(void) const
 		{
 			return (std::numeric_limits<size_type>::max() / (sizeof(Node<T>)));
