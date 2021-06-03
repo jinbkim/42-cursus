@@ -28,5 +28,7 @@ int main(int argc, char **argv)
 		else
 			std::cout << "Wrong input!" << std::endl;
 	}
+	while (1)
+		;
 	return (0);
 }

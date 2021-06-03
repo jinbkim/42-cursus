@@ -53,13 +53,10 @@ static void max_size(void)
 static void resize(void)
 {
 	print_header("Resize");
-	ft::vector<std::string> v1;
-	std::vector<std::string> v2;
-	v1.resize(10, "test");
-	v2.resize(10, "test");
-	check("v1 == v2", (v1 == v2));
-	v1.resize(2, "42");
-	v2.resize(2, "42");
+	ft::vector<int> v1;
+	std::vector<int> v2;
+	v1.resize(3, 3);
+	v2.resize(3, 3);
 	check("v1 == v2", (v1 == v2));
 }
 
@@ -133,17 +130,11 @@ static void front_back(void)
 static void assign(void)
 {
 	print_header("Assign");
-	std::string test[] = {"Hey", "what's", "up", "?"};
-	ft::vector<std::string> v1;
-	std::vector<std::string> v2;
-	v1.assign(test, test + 4);
-	v2.assign(test, test + 4);
+	ft::vector<int> v1;
+	std::vector<int> v2;
+	v1.assign(3, 3);
+	v2.assign(3, 3);
 	check("v1 == v2", v1 == v2);
-	v1.assign(10, "?");
-	v2.assign(10, "?");
-	check("v1 == v2", v1 == v2);
-	ft::vector<std::string> v3(3, "test");
-	std::vector<std::string> v4(3, "test");
 }
 
 static void insert(void)
@@ -170,11 +161,10 @@ static void insert(void)
 static void erase(void)
 {
 	print_header("Erase / Clear");
-	std::string test[] = {"Hey", "what's", "up", "?"};
-	ft::vector<std::string> v1;
-	std::vector<std::string> v2;
-	v1.assign(test, test + 4);
-	v2.assign(test, test + 4);
+	ft::vector<int> v1;
+	std::vector<int> v2;
+	v1.assign(3, 3);
+	v2.assign(3, 3);
 	v1.erase(v1.begin() + 2);
 	v2.erase(v2.begin() + 2);
 	check("v1 == v2", v1 == v2);

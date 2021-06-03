@@ -3,7 +3,7 @@ OBJ			= *.o
 
 RM			= rm -rf
 CC			= clang++
-CFLAGS		= -Wall -Wextra -Werror -g -fsanitize=address -std=c++98
+CFLAGS		= -Wall -Wextra -Werror -std=c++98
 DIR			= ./src
 
 
