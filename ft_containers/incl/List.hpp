@@ -1,5 +1,5 @@
-#ifndef LIST_HPP
-# define LIST_HPP
+#ifndef list_HPP
+# define list_HPP
 
 # include "utils.hpp"
 
@@ -114,6 +114,133 @@ namespace ft
 			return (*this);
 		};
 		listIterator &operator-=(int n)
+		{
+			while (n > 0)
+			{
+				operator--();
+				n--;
+			}
+			while (n < 0)
+			{
+				operator++();
+				n++;
+			}
+			return (*this);
+		};
+	};
+
+
+
+	template <class T>
+	class ConstlistIterator
+	{
+	public:
+		typedef T value_type;
+		typedef T &reference;
+		typedef Node<T> *pointer;
+
+	protected:
+		pointer _ptr;
+
+	public:
+		ConstlistIterator(void){};
+		ConstlistIterator(const ConstlistIterator &other)
+		{
+			*this = other;
+		};
+		ConstlistIterator(pointer ptr)
+			: _ptr(ptr){};
+		~ConstlistIterator(void){};
+		pointer node(void) const
+		{
+			return (_ptr);
+		};
+		ConstlistIterator &operator=(const ConstlistIterator &other)
+		{
+			_ptr = other._ptr;
+			return (*this);
+		};
+		ConstlistIterator &operator++(void)
+		{
+			_ptr = _ptr->next;
+			return (*this);
+		};
+		ConstlistIterator &operator--(void)
+		{
+			_ptr = _ptr->prev;
+			return (*this);
+		};
+		ConstlistIterator operator++(int)
+		{
+			ConstlistIterator tmp(*this);
+			operator++();
+			return (tmp);
+		};
+		ConstlistIterator operator--(int)
+		{
+			ConstlistIterator tmp(*this);
+			operator--();
+			return (tmp);
+		};
+		bool operator==(const ConstlistIterator &other) const
+		{
+			return (_ptr == other._ptr);
+		};
+		bool operator!=(const ConstlistIterator &other) const
+		{
+			return (_ptr != other._ptr);
+		};
+		bool operator>(const ConstlistIterator &other) const
+		{
+			return (_ptr > other._ptr);
+		};
+		bool operator>=(const ConstlistIterator &other) const
+		{
+			return (_ptr >= other._ptr);
+		};
+		bool operator<(const ConstlistIterator &other) const
+		{
+			return (_ptr < other._ptr);
+		};
+		bool operator<=(const ConstlistIterator &other) const
+		{
+			return (_ptr <= other._ptr);
+		};
+		const value_type &operator*(void)
+		{
+			return (_ptr->data);
+		};
+		const value_type *operator->(void)
+		{
+			return (_ptr->data);
+		};
+		ConstlistIterator operator+(int n) const
+		{
+			ConstlistIterator tmp(*this);
+			tmp += n;
+			return (tmp);
+		};
+		ConstlistIterator operator-(int n) const
+		{
+			ConstlistIterator tmp(*this);
+			tmp -= n;
+			return (tmp);
+		};
+		ConstlistIterator &operator+=(int n)
+		{
+			while (n < 0)
+			{
+				(*this)--;
+				n++;
+			}
+			while (n > 0)
+			{
+				(*this)++;
+				n--;
+			}
+			return (*this);
+		};
+		ConstlistIterator &operator-=(int n)
 		{
 			while (n > 0)
 			{
@@ -251,6 +378,126 @@ namespace ft
 
 
 
+	template <class T>
+	class ConstReverselistIterator
+	{
+	public:
+		typedef T value_type;
+		typedef T &reference;
+		typedef Node<T> *pointer;
+
+	protected:
+		pointer _ptr;
+
+	public:
+		ConstReverselistIterator(void){};
+		ConstReverselistIterator(const ConstReverselistIterator &other)
+		{
+			*this = other;
+		};
+		ConstReverselistIterator(pointer ptr)
+		{
+			this->_ptr = ptr;
+		};
+		~ConstReverselistIterator(void){};
+		ConstReverselistIterator &operator++(void)
+		{
+			this->_ptr = this->_ptr->prev;
+			return (*this);
+		};
+		ConstReverselistIterator &operator--(void)
+		{
+			this->_ptr = this->_ptr->next;
+			return (*this);
+		};
+		ConstReverselistIterator operator++(int)
+		{
+			ConstReverselistIterator tmp(*this);
+			operator++();
+			return (tmp);
+		};
+		ConstReverselistIterator operator--(int)
+		{
+			ConstReverselistIterator tmp(*this);
+			operator--();
+			return (tmp);
+		};
+		bool operator==(const ConstReverselistIterator &other) const
+		{
+			return (_ptr == other._ptr);
+		};
+		bool operator!=(const ConstReverselistIterator &other) const
+		{
+			return (_ptr != other._ptr);
+		};
+		bool operator>(const ConstReverselistIterator &other) const
+		{
+			return (_ptr > other._ptr);
+		};
+		bool operator>=(const ConstReverselistIterator &other) const
+		{
+			return (_ptr >= other._ptr);
+		};
+		bool operator<(const ConstReverselistIterator &other) const
+		{
+			return (_ptr < other._ptr);
+		};
+		bool operator<=(const ConstReverselistIterator &other) const
+		{
+			return (_ptr <= other._ptr);
+		};
+		value_type &operator*(void)
+		{
+			return (_ptr->data);
+		};
+		value_type *operator->(void)
+		{
+			return (_ptr->data);
+		};
+		ConstReverselistIterator operator+(int n) const
+		{
+			ConstReverselistIterator tmp(*this);
+			tmp += n;
+			return (tmp);
+		};
+		ConstReverselistIterator operator-(int n) const
+		{
+			ConstReverselistIterator tmp(*this);
+			tmp -= n;
+			return (tmp);
+		};
+		ConstReverselistIterator &operator+=(int n)
+		{
+			while (n < 0)
+			{
+				(*this)--;
+				n++;
+			}
+			while (n > 0)
+			{
+				(*this)++;
+				n--;
+			}
+			return (*this);
+		};
+		ConstReverselistIterator &operator-=(int n)
+		{
+			while (n > 0)
+			{
+				operator--();
+				n--;
+			}
+			while (n < 0)
+			{
+				operator++();
+				n++;
+			}
+			return (*this);
+		};
+	};
+
+
+
 	template <class T, class Alloc = std::allocator<T> >
 	class list
 	{
@@ -264,9 +511,9 @@ namespace ft
 		typedef unsigned long size_type;
 		typedef Node<value_type> *node;
 		typedef listIterator<value_type> iterator;
-		typedef iterator const_iterator;
+		typedef ConstlistIterator<value_type> const_iterator;
 		typedef ReverselistIterator<value_type> reverse_iterator;
-		typedef reverse_iterator const_reverse_iterator;
+		typedef ConstReverselistIterator<value_type> const_reverse_iterator;
 
 	private:
 		node _list_begin;

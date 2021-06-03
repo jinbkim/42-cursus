@@ -1,5 +1,5 @@
-#ifndef MAP_HPP
-# define MAP_HPP
+#ifndef map_HPP
+# define map_HPP
 
 # include "utils.hpp"
 
@@ -130,7 +130,7 @@ namespace ft
 
 
 	template <class K, class T>
-	class ReversemapIterator
+	class ConstmapIterator
 	{
 	public:
 		typedef std::pair<K, T> value_type;
@@ -180,13 +180,139 @@ namespace ft
 		};
 
 	public:
-		ReversemapIterator(void) : _ptr(0){};
-		ReversemapIterator(const pointer ptr) : _ptr(ptr){};
-		ReversemapIterator(const ReversemapIterator &other)
+		ConstmapIterator(void)
+			: _ptr(0){};
+		ConstmapIterator(const pointer ptr)
+			: _ptr(ptr){};
+		ConstmapIterator(const ConstmapIterator &other)
 		{
 			*this = other;
 		};
-		ReversemapIterator &operator=(const ReversemapIterator &other)
+		ConstmapIterator &operator=(const ConstmapIterator &other)
+		{
+			_ptr = other._ptr;
+			return (*this);
+		};
+		pointer node(void)
+		{
+			return (_ptr);
+		};
+		value_type &operator*(void) const
+		{
+			return (_ptr->pair);
+		};
+		value_type *operator->(void) const
+		{
+			return (&_ptr->pair);
+		};
+		bool operator==(const ConstmapIterator<K, T> &other)
+		{
+			return (_ptr == other._ptr);
+		};
+		bool operator!=(const ConstmapIterator<K, T> &other)
+		{
+			return (!(*this == other));
+		};
+		bool operator>(const ConstmapIterator<K, T> &other)
+		{
+			return (_ptr > other._ptr);
+		};
+		bool operator<(const ConstmapIterator<K, T> &other)
+		{
+			return (_ptr < other._ptr);
+		};
+		bool operator>=(const ConstmapIterator<K, T> &other)
+		{
+			return (_ptr >= other._ptr);
+		};
+		bool operator<=(const ConstmapIterator<K, T> &other)
+		{
+			return (_ptr <= other._ptr);
+		};
+		ConstmapIterator &operator++(void)
+		{
+			_ptr = _successor(_ptr);
+			return (*this);
+		};
+		ConstmapIterator &operator--(void)
+		{
+			_ptr = _predecessor(_ptr);
+			return (*this);
+		};
+		ConstmapIterator operator++(int)
+		{
+			ConstmapIterator tmp(*this);
+			this->operator++();
+			return (tmp);
+		};
+		ConstmapIterator operator--(int)
+		{
+			ConstmapIterator tmp(*this);
+			this->operator--();
+			return (tmp);
+		};
+	};
+
+
+
+	template <class K, class T>
+	class ReversmapIterator
+	{
+	public:
+		typedef std::pair<K, T> value_type;
+		typedef std::pair<K, T> &reference;
+		typedef BNode<K, T> *pointer;
+
+	protected:
+		pointer _ptr;
+
+	private:
+		pointer _successor(pointer ptr)
+		{
+			pointer next;
+			if (!ptr->right)
+			{
+				next = ptr;
+				while (next->parent && next == next->parent->right)
+					next = next->parent;
+				next = next->parent;
+			}
+			else
+			{
+				next = ptr->right;
+				while (next->left)
+					next = next->left;
+			}
+			return (next);
+		};
+		pointer _predecessor(pointer ptr)
+		{
+			pointer next;
+
+			if (!ptr->left)
+			{
+				next = ptr;
+				while (next->parent && next == next->parent->left)
+					next = next->parent;
+				next = next->parent;
+			}
+			else
+			{
+				next = ptr->left;
+				while (next->right)
+					next = next->right;
+			}
+			return (next);
+		};
+
+	public:
+		ReversmapIterator(void) : _ptr(0){};
+		ReversmapIterator(const pointer ptr) : _ptr(ptr){};
+		ReversmapIterator(const ReversmapIterator &other)
+		{
+			*this = other;
+		};
+		ReversmapIterator &operator=(const ReversmapIterator &other)
 		{
 			_ptr = other._ptr;
 			return (*this);
@@ -203,49 +329,175 @@ namespace ft
 		{
 			return (&_ptr->pair);
 		};
-		bool operator==(const ReversemapIterator<K, T> &other)
+		bool operator==(const ReversmapIterator<K, T> &other)
 		{
 			return (_ptr == other._ptr);
 		};
-		bool operator!=(const ReversemapIterator<K, T> &other)
+		bool operator!=(const ReversmapIterator<K, T> &other)
 		{
 			return (!(*this == other));
 		};
-		bool operator>(const ReversemapIterator<K, T> &other)
+		bool operator>(const ReversmapIterator<K, T> &other)
 		{
 			return (_ptr > other._ptr);
 		};
-		bool operator<(const ReversemapIterator<K, T> &other)
+		bool operator<(const ReversmapIterator<K, T> &other)
 		{
 			return (_ptr < other._ptr);
 		};
-		bool operator>=(const ReversemapIterator<K, T> &other)
+		bool operator>=(const ReversmapIterator<K, T> &other)
 		{
 			return (_ptr >= other._ptr);
 		};
-		bool operator<=(const ReversemapIterator<K, T> &other)
+		bool operator<=(const ReversmapIterator<K, T> &other)
 		{
 			return (_ptr <= other._ptr);
 		};
-		ReversemapIterator &operator++(void)
+		ReversmapIterator &operator++(void)
 		{
 			_ptr = _predecessor(_ptr);
 			return (*this);
 		};
-		ReversemapIterator &operator--(void)
+		ReversmapIterator &operator--(void)
 		{
 			_ptr = _successor(_ptr);
 			return (*this);
 		};
-		ReversemapIterator operator++(int)
+		ReversmapIterator operator++(int)
 		{
-			ReversemapIterator tmp(*this);
+			ReversmapIterator tmp(*this);
 			this->operator++();
 			return (tmp);
 		};
-		ReversemapIterator operator--(int)
+		ReversmapIterator operator--(int)
 		{
-			ReversemapIterator tmp(*this);
+			ReversmapIterator tmp(*this);
+			this->operator--();
+			return (tmp);
+		};
+	};
+
+
+
+	template <class K, class T>
+	class ConstReversemapIterator
+	{
+	public:
+		typedef std::pair<K, T> value_type;
+		typedef std::pair<K, T> &reference;
+		typedef BNode<K, T> *pointer;
+
+	protected:
+		pointer _ptr;
+
+	private:
+		pointer _successor(pointer ptr)
+		{
+			pointer next;
+			if (!ptr->right)
+			{
+				next = ptr;
+				while (next->parent && next == next->parent->right)
+					next = next->parent;
+				next = next->parent;
+			}
+			else
+			{
+				next = ptr->right;
+				while (next->left)
+					next = next->left;
+			}
+			return (next);
+		};
+		pointer _predecessor(pointer ptr)
+		{
+			pointer next;
+
+			if (!ptr->left)
+			{
+				next = ptr;
+				while (next->parent && next == next->parent->left)
+					next = next->parent;
+				next = next->parent;
+			}
+			else
+			{
+				next = ptr->left;
+				while (next->right)
+					next = next->right;
+			}
+			return (next);
+		};
+
+	public:
+		ConstReversemapIterator(void)
+			: _ptr(0){};
+		ConstReversemapIterator(const pointer ptr)
+			: _ptr(ptr){};
+		ConstReversemapIterator(const ConstReversemapIterator &other)
+		{
+			*this = other;
+		};
+		ConstReversemapIterator &operator=(const ConstReversemapIterator &other)
+		{
+			_ptr = other._ptr;
+			return (*this);
+		};
+		pointer node(void)
+		{
+			return (_ptr);
+		};
+		value_type &operator*(void) const
+		{
+			return (_ptr->pair);
+		};
+		value_type *operator->(void) const
+		{
+			return (&_ptr->pair);
+		};
+		bool operator==(const ConstReversemapIterator<K, T> &other)
+		{
+			return (_ptr == other._ptr);
+		};
+		bool operator!=(const ConstReversemapIterator<K, T> &other)
+		{
+			return (!(*this == other));
+		};
+		bool operator>(const ConstReversemapIterator<K, T> &other)
+		{
+			return (_ptr > other._ptr);
+		};
+		bool operator<(const ConstReversemapIterator<K, T> &other)
+		{
+			return (_ptr < other._ptr);
+		};
+		bool operator>=(const ConstReversemapIterator<K, T> &other)
+		{
+			return (_ptr >= other._ptr);
+		};
+		bool operator<=(const ConstReversemapIterator<K, T> &other)
+		{
+			return (_ptr <= other._ptr);
+		};
+		ConstReversemapIterator &operator++(void)
+		{
+			_ptr = _predecessor(_ptr);
+			return (*this);
+		};
+		ConstReversemapIterator &operator--(void)
+		{
+			_ptr = _successor(_ptr);
+			return (*this);
+		};
+		ConstReversemapIterator operator++(int)
+		{
+			ConstReversemapIterator tmp(*this);
+			this->operator++();
+			return (tmp);
+		};
+		ConstReversemapIterator operator--(int)
+		{
+			ConstReversemapIterator tmp(*this);
 			this->operator--();
 			return (tmp);
 		};
@@ -269,9 +521,9 @@ namespace ft
 		typedef unsigned long size_type;
 		typedef BNode<key_type, mapped_type> *node;
 		typedef mapIterator<key_type, mapped_type> iterator;
-		typedef ReversemapIterator<key_type, mapped_type> reverse_iterator;
-		typedef iterator const_iterator;
-		typedef reverse_iterator const_reverse_iterator;
+		typedef ReversmapIterator<key_type, mapped_type> reverse_iterator;
+			typedef ConstmapIterator<key_type, mapped_type> const_iterator;
+			typedef ConstReversemapIterator<key_type, mapped_type> const_reverse_iterator;
 		class value_compare
 		{
 			friend class map;  // non-member
@@ -313,8 +565,6 @@ namespace ft
 		};
 		node _insert_node(node n, key_type key, mapped_type value, bool end = false)
 		{
-			// std::cout<<"n->pair.first : "<<n->pair.first <<", n->end : "<<n->end<<'\n';
-			// std::cout<<"key : "<<key<<", value : "<<value<<", end : "<<end<<'\n';
 			if (n->end)
 			{
 				if (!n->left)

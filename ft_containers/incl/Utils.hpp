@@ -1,10 +1,10 @@
 #ifndef UTILS_HPP
 # define UTILS_HPP
 
-# include <utility>
-# include <memory>
-# include <functional>
-# include <limits>
+# include <utility>  // make_pair, etc..
+# include <memory>  // allocator, etc..
+# include <functional>  // less, etc.. 
+# include <limits>  // numeric_limits, etc..
 
 namespace ft
 {
