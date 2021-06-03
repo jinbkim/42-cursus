@@ -1,5 +1,5 @@
-#ifndef map_HPP
-# define map_HPP
+#ifndef MAP_HPP
+# define MAP_HPP
 
 # include "utils.hpp"
 
@@ -57,7 +57,9 @@ namespace ft
 
 	public:
 		mapIterator(void) : _ptr(0){};
-		mapIterator(const pointer ptr) : _ptr(ptr){};
+		mapIterator(const pointer ptr) : _ptr(ptr){
+			std::cout<<"2\n";
+		};
 		mapIterator(const mapIterator &other)
 		{
 			*this = other;
@@ -522,11 +524,12 @@ namespace ft
 		typedef BNode<key_type, mapped_type> *node;
 		typedef mapIterator<key_type, mapped_type> iterator;
 		typedef ReversmapIterator<key_type, mapped_type> reverse_iterator;
-			typedef ConstmapIterator<key_type, mapped_type> const_iterator;
-			typedef ConstReversemapIterator<key_type, mapped_type> const_reverse_iterator;
+		typedef ConstmapIterator<key_type, mapped_type> const_iterator;
+		typedef ConstReversemapIterator<key_type, mapped_type> const_reverse_iterator;
 		class value_compare
 		{
-			friend class map;  // non-member
+			// map 에서 value_compare를 맘대로 쓸수 있음
+			friend class map; // non-member
 
 		protected:
 			Compare comp;
@@ -690,26 +693,14 @@ namespace ft
 		};
 		iterator begin(void)
 		{
-			// node n = _root;
 			node n = _root->right;
-			// if (!n->left && !n->right)
-			// 	return (end());
-			// if (!n->left && n->right)
-			// 	n = n->right;
-
 			while (n->left)
 				n = n->left;
 			return (iterator(n));
 		};
 		const_iterator begin(void) const
 		{
-			// node n = _root;
 			node n = _root->right;
-			// if (!n->left && !n->right)
-			// 	return (end());
-			// if (!n->left && n->right)
-			// 	n = n->right;
-
 			while (n->left)
 				n = n->left;
 			return (const_iterator(n));
@@ -759,7 +750,7 @@ namespace ft
 			iterator tmp = find(k);
 			if (tmp != end())
 				return tmp->second;
-			return (insert(std::make_pair(k, mapped_type())).first->second);
+			return (insert(std::make_pair(k, mapped_type())).first->second);  // 기본값을 넣고 넣은 그 기본값을 반환
 		};
 		std::pair<iterator, bool> insert(const value_type &value)
 		{
@@ -767,7 +758,7 @@ namespace ft
 			if ((tmp = find(value.first)) != end())
 				return (std::make_pair(tmp, false));
 			++_length;
-			return (std::make_pair(iterator(_insert_node(_root, value.first, value.second)), true));
+			return (std::make_pair(iterator(_insert_node(_root, value.first, value.second)), true));  // value를 넣고 value와 true를 반환
 		};
 		iterator insert(iterator position, const value_type &value)
 		{
@@ -775,7 +766,7 @@ namespace ft
 			if ((tmp = find(value.first)) != end())
 				return (tmp);
 			++_length;
-			return (iterator(_insert_node(position.node(), value.first, value.second)));
+			return (iterator(_insert_node(position.node(), value.first, value.second)));  // value를 넣고 value를 반환
 		};
 		template <class InputIterator>
 		void insert(InputIterator first, InputIterator last, typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type tmp = 0)
@@ -823,7 +814,7 @@ namespace ft
 		};
 		value_compare value_comp(void) const
 		{
-			return (this->value_compare);
+			return (value_compare(Compare()));
 		};
 		iterator find(const key_type &value)
 		{
@@ -908,10 +899,6 @@ namespace ft
 		{
 			return (std::pair<iterator, iterator>(this->lower_bound(k), this->upper_bound(k)));
 		};
-		// void debug(void)
-		// {
-		// 	_debug_tree(_root);
-		// };
 	};
 	template <class Key, class T, class Compare, class Alloc>
 	void swap(ft::map<Key, T, Compare, Alloc> &x, ft::map<Key, T, Compare, Alloc> &y)
