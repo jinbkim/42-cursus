@@ -58,7 +58,6 @@ namespace ft
 	public:
 		mapIterator(void) : _ptr(0){};
 		mapIterator(const pointer ptr) : _ptr(ptr){
-			std::cout<<"2\n";
 		};
 		mapIterator(const mapIterator &other)
 		{
