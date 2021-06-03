@@ -654,8 +654,8 @@ namespace ft
 		};
 		void _init_tree(void)
 		{
-			_root = _new_node(key_type(), mapped_type(), 0);
-			_root->right = _new_node(key_type(), mapped_type(), _root, true);
+			_root = _new_node(std::numeric_limits<key_type>::min(), mapped_type(), 0);
+			_root->right = _new_node(std::numeric_limits<key_type>::max(), mapped_type(), _root, true);
 			_length = 0;
 		};
 		node _end(void) const
