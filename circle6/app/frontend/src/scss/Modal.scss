@@ -1,0 +1,61 @@
+.modal {
+  position: fixed;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 0 auto;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba(15, 17, 16, 0.75);
+  .content {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .content::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+  .content {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    padding-bottom: 20px;
+    background-color: #fff;
+    align-self: center;
+    box-shadow: 0 12px 25px 0 rgba(199, 175, 189, 0.25);
+    overflow: hidden auto;
+    .modal-closer {
+      position: relative;
+      float: right;
+      width: 30px;
+      height: 30px;
+      padding: 10px;
+      &:hover {
+        opacity: 0.6;
+        cursor: pointer;
+        transform: rotate(180deg);
+        transition: all 0.3s ease;
+      }
+    }
+  }
+  .small-content {
+    width: 400px;
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .content {
+    width: calc(100% - 40px);
+    padding-bottom: 15px;
+  }
+}

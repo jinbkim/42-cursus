@@ -1,0 +1,116 @@
+@import "../../colors.scss";
+
+@keyframes dm-animation {
+  0% {
+    width: 30px;
+    height: 30px;
+  }
+  50% {
+    width: 35px;
+    height: 35px;
+  }
+  100% {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@keyframes dm-closer-animation {
+  0% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+main {
+  height: 100vh;
+  #button-container {
+    margin-left: 240px;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto;
+    .buttons {
+      display: inline-flex;
+      justify-content: center;
+      margin: 20px;
+      padding: 0;
+      color: #fff;
+      text-align: center;
+      border-radius: 20px;
+      font-size: 2em;
+      font-weight: bold;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition-duration: 0.2s;
+      span {
+        color: rgba(0, 0, 0, 0.2);
+        font-size: 0.4em;
+        display: block;
+        margin: 10px 0;
+      }
+    }
+
+    #record {
+      background-color: #854EF6;
+      grid-row: 1 / 4;
+      &:hover {
+        background-color: #663cb9;
+      }
+    }
+    #chat {
+      background-color: #0095ff;
+      grid-row: 1 / 4;
+      &:hover {
+        background-color: #0075c9;
+      }
+    }
+    #game {
+      background-color: $green;
+      grid-column: 1 / 3;
+      &:hover {
+        background-color: #3a8a4a;
+      }
+    }
+  }
+  section#dm-section {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+    button#dm-controll-button {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #282438;
+      border: 1px solid #fff;
+      cursor: pointer;
+      div.un-read-msg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: red;
+        border-radius: 50%;
+        color: #fff;
+        line-height: 1.5em;
+        width: 1.5em;
+        height: 1.5em;
+      }
+      img.dm-img {
+        width: 30px;
+        height: 30px;
+        margin-top: 5px;
+        &.dm {
+          animation: dm-animation .25s;
+        }
+        &.closer {
+          animation: dm-closer-animation .25s;
+        }
+      }
+    }
+  }
+}
